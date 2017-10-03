@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<script type="text/javascript"></script>
+	<title> Probando ajax </title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+</head>
+<body>
+	<form action="#">
+		<textarea id="h-trad-text" placeholder="Ingrese su frase a traducir" maxlength="140" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all" style="height: 52px; width: 90%;"></textarea>
+
+		<button type="button" class="btn btn-primary" id="ws-btn-trad">Traducir</button>
+
+	</form>
+  <div class="ws-wrapper">
+    <ul id="ws-translator">
+
+    </ul>
+  </div>
+	
+</body>
+<script type="text/javascript">
+ $('#ws-btn-trad').bind("click", function(){
+    traducirSpaCol();
+  }); 
+
+	$tradInput = $('#h-trad-text'); // Texto enviado por el usuario
+
+
+
+	 traducirSpaCol = function(){
+    // validacion
+    if (!$tradInput.val().length){
+      $botonLimpiar.click();
+      return;
+    }
+   
+    
+    // 1. Sanitizo texto    
+    // Convierto a minisculas y elimino espacios iniciales y finales
+    var tradTxtTmp = $tradInput.val().toLowerCase().replace(/^\s+|\s+$/g,'');
+    // Reemplazo acentos
+      tradTxtTmp = tradTxtTmp.replace(/(Ã¡)/g,'a');
+      tradTxtTmp = tradTxtTmp.replace(/(Ã©)/g,'e');
+      tradTxtTmp = tradTxtTmp.replace(/(Ã­)/g,'i');
+      tradTxtTmp = tradTxtTmp.replace(/(Ã³)/g,'o');
+      tradTxtTmp = tradTxtTmp.replace(/(Ãº)/g,'u');
+
+      tradTxtTmp = tradTxtTmp.split(/\s+/);
+ 	// 2. Elimino palabras no utilizadas en lengua de signos    
+    var tradTxtTmpL = tradTxtTmp.length,
+     tradTxtTmp2 = [];
+    
+    for (iT=0; iT<tradTxtTmpL; iT++){       
+      if (parseFloat(tradTxtTmp[iT]) || parseFloat(tradTxtTmp[iT])==0){// 3. Limpio y convierto los numeros a texto
+        nSub = Math.round(parseFloat(tradTxtTmp[iT]));
+        nStr = nSub.toString().replace('.','');// xq un numero muy largo lo corta a 1.xxx y lo eleva, tons aca elimino ese .
+        if (nStr.length>7){nSub = nStr.substr(0,7);} //corto el numero
+        tradTxtTmp[iT] = nSub + '|' + numeroATexto(nSub);
+      }
+      
+      if (tradTxtTmp[iT]!=''){
+        tradTxtTmp2.push(tradTxtTmp[iT]);// Genero el nuevo array
+      }
+    }
+    
+    tradTxt = tradTxtTmp2;
+   //  console.log(tradTxt);
+    ajaxTraduccion();
+
+	}
+
+  ajaxTraduccion = function(){
+
+    var request = $.ajax({
+     type: "POST",
+      url: 'peticion.php',
+     // data: 'txt='+tradTxt,
+     data: {txt : tradTxt},
+      dataType: "json",
+     
+    });
+
+    // recibo JSON con traduccion palabra, imagen, gesto-flecha
+    request.done( function( $trad ) {  
+   
+      if ($trad==='sinTraduccion'){
+        alert('La frase ingresada no posee traducciÃ³n');
+        $loader.fadeOut();
+        return;
+      }
+    console.log($trad);
+      
+      
+      generarSlideshow($trad);
+    });
+  }
+
+  generarSlideshow = function($trad){
+    $slideshow = $('#ws-translator');
+    $slideshow.html('');
+
+      var cantidad = $trad.length;
+    
+    for (var i=0; i<cantidad; i++){
+    $slideshow.append( "<li> <img src='Galeria/"+$trad[i]['link']+"'> </li>" );
+    }    
+
+
+
+  }
+</script>
+</html>
