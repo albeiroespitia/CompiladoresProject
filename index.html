@@ -26,9 +26,9 @@
 
 	</form>
   <div class="ws-wrapper">
-    <ul id="ws-translator">
+    <div class='carousel' id="ws-translator">
 
-    </ul>
+    </div>
   </div>
 
     
@@ -36,9 +36,7 @@
 
   <script type="text/javascript">
 
-  $(document).ready(function(){
-      $('.carousel').carousel();
-    });
+
 
  $('#ws-btn-esc').bind("click", function(){
   UserDictation.start();
@@ -64,7 +62,7 @@ var UserDictation = artyom.newDictation({
         console.log("Dictado iniciado");
     },
     onEnd:function(){
-        alert("Dictado detenido por el usuario");
+        console.log("Dictado detenido por el usuario");
     }
 });
 
@@ -150,13 +148,12 @@ var UserDictation = artyom.newDictation({
     $slideshow.html('');
 
       var cantidad = $trad.length;
-   $slideshow.append("<div class='carousel'>"); 
-    
+
     for (var i=0; i<cantidad; i++){
     $slideshow.append( "<a class='carousel-item' href='#"+i+"'> <img src='Galeria/"+$trad[i]['link']+"'> </a>" );
     }    
-     $slideshow.append( "</div>">);
-
+     
+$('.carousel').carousel();
 
   }
 </script>	
