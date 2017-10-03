@@ -1,0 +1,65 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ html {
+    font-family: 'Open Sans', Calibri, Trebuchet, sans-serif;
+ }
+
+.titulo{
+	padding : 10px;
+	font-size: 25px;
+	border-bottom: 1px solid #000;
+}
+
+
+
+.side-nav{
+	background:#222;
+	color: #9d9d9d;
+}
+
+.side-nav li>a{
+	font-weight: 100;
+	color: white;
+}
+
+.selected{
+	background-color: #080808;
+}
+
+.tablaDatos{
+	margin-top: 100px;
+}
+
+.editar{
+	margin-right: 15px;
+}
+
+.editar,
+.borrar{
+	cursor: pointer;
+}
+
+.agregarButton{
+	margin-top: 10px;
+	float: left;
+}
+
+.error-create{
+	color: red;
+}
+
+.cerrar-sesion{
+	float: right;
+	margin: 20px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+
+.cerrar-sesion:hover{
+	text-decoration: underline;
+}
