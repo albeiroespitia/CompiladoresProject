@@ -12,7 +12,7 @@
 
  
     <div id="modal1" class="modal">
-        <form action="../../../../Controller/ControllerImagenProducto.php" id="add-form" method="POST" enctype="multipart/form-data">
+        <form action="../../../../Controller/ControllerImagen.php" id="add-form" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
         <input type="hidden" name="idUser" value="<?=$_SESSION['idUsuario'];?>"></input>
         <div class="row">
@@ -42,7 +42,7 @@
       </div>
 
       <div id="modal2" class="modal">
-        <form action="../../../../Controller/ControllerImagenProducto.php" id="edit-form" method="POST" enctype="multipart/form-data">
+        <form action="../../../../Controller/ControllerImagen.php" id="edit-form" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
         <input type="hidden" name="idUser" value="<?=$_SESSION['idUsuario'];?>"></input>
         <input type="hidden" name="idProducto" value=""></input>
@@ -77,21 +77,8 @@
   <div class="col s3">
 	<ul id="slide-out" class="side-nav fixed">
 	  <li class="titulo">Tablas</li>
-      <li class="selected"><a>Ciudad</a></li>
-      <li><a href="Views/Cliente/cliente.php">Cliente</a></li>
-      <li><a href="Views/DetalleFac/detallefac.php">Detalle Factura</a></li>
-      <li><a href="Views/DetalleFacCompra/detallefaccompra.php">Detalle Factura Compra</a></li>
-      <li><a href="Views/DetalleVentaServicio/detalleventaservicio.php">Detalle Venta Servicio</a></li>
-      <li><a href="Views/Factura/factura.php">Factura</a></li>
-      <li><a href="Views/FacturaCompra/facturacompra.php">Factura Compra</a></li>
-      <li><a href="Views/FacturaServicio/facturaservicio.php">Factura Servicio</a></li>
-      <li><a href="Views/FormaPago/formapago.php">Forma Pago</a></li>
-      <li><a href="Views/ImagenProducto/imagenproducto.php">Imagen Producto</a></li>
-      <li><a href="Views/ImagenProyecto/imagenproyecto.php">Imagen Proyecto</a></li>
-      <li><a href="Views/Producto/producto.php">Producto</a></li>
-      <li><a href="Views/Proovedor/proovedor.php">Proovedor</a></li>
-      <li><a href="Views/Proyecto/proyecto.php">Proyecto</a></li>
-      <li><a href="Views/Usuario/usuario.php">Usuario</a></li>
+      <li class="selected"><a>Imagenes</a></li>
+     
     </ul>
     </div>
 
@@ -102,8 +89,9 @@
      <table class="tablaDatos">
         <thead>
           <tr>
-              <th>idCiudad</th>
+              <th>idImagen</th>
               <th>Nombre</th>
+              <th>Imagen</th>
           </tr>
         </thead>
         <tbody class="cuerpoTabla">

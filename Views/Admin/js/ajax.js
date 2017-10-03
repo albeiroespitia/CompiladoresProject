@@ -1,6 +1,6 @@
 function reload(){
 	$.ajax({
-		url: '/ProyectoDB/Controller/ControllerCiudad.php',
+		url: '/CompiladoresProject/Controller/ControllerImagen.php',
 		data : {tipo : 'listar'},
 		type : 'POST',
 		success: function(res){
@@ -19,7 +19,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		var nombreCiudad = $('input[name="nombreCiudad"]').val();
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
+			url: '/CompiladoresProject/Controller/ControllerImagen.php',
 			data : {tipo : 'agregar',nombreCiudad: nombreCiudad},
 			type : 'POST',
 			success: function(res){
@@ -42,7 +42,7 @@ $(document).ready(function() {
 		var nuevoNombreCiudad = $('input[name="nuevoNombreCiudad"]').val();
 		console.log(nuevoNombreCiudad);
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
+			url: '/CompiladoresProject/Controller/ControllerImagen.php',
 			data : {tipo : 'editar', idCiudad: pk1 , nombreCiudad: nuevoNombreCiudad},
 			type : 'POST',
 			success: function(res){
@@ -62,7 +62,7 @@ $(document).ready(function() {
 	$(document).on('click', '.borrar' ,function(){	
 		var idCiudad = $(this).closest('tr').find('#idCiudad').html();
 		$.ajax({
-			url: '/ProyectoDB/Controller/ControllerCiudad.php',
+			url: '/CompiladoresProject/Controller/ControllerImagen.php',
 			data : {tipo : 'eliminar',idCiudad: idCiudad},
 			type : 'POST',
 			success: function(res){

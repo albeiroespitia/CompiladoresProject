@@ -53,22 +53,6 @@
 
 		}
 
-		public function listarImagenes(){
-			$sql = "SELECT * FROM imagen";
-			$consulta = $this->db->prepare($sql);
-			$resultado = $consulta->execute();
-			$imagenes = $consulta->fetchall(PDO::FETCH_ASSOC);
-
-			if($imagenes == true){
-				return $imagenes;
-			}else{
-				return 0;
-			}
-
-
-			$consulta->closeCursor();
-
-		}
 
 		public function crearImagen($nombre,$link){
 			try{
