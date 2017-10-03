@@ -21,10 +21,7 @@
                 <label for="icon_prefix">Descripcion de la imagen</label>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12 selectProducto">  
-              </div>
-            </div>
+          
              <div class="file-field input-field">
               <div class="btn">
                 <span>File</span>
@@ -36,41 +33,12 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" name="inputImage" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
+          <button type="submit" name="inputImage" class="modal-action modal-close waves-effect waves-green btn-flat">Subir</button>
         </div>
         </form>
       </div>
 
-      <div id="modal2" class="modal">
-        <form action="../../../../Controller/ControllerImagen.php" id="edit-form" method="POST" enctype="multipart/form-data">
-        <div class="modal-content">
-        <input type="hidden" name="idUser" value="<?=$_SESSION['idUsuario'];?>"></input>
-        <input type="hidden" name="idProducto" value=""></input>
-        <div class="row">
-              <div class="input-field col s12"><i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" name="descripcionEditar" class="validate" required>
-                <label for="icon_prefix"></label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12 selectProductoEditar">  
-              </div>
-            </div>
-             <div class="file-field input-field">
-              <div class="btn">
-                <span>File</span>
-                <input name="uploadFile" type="file">
-              </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" name="inputImageEditar" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</button>
-        </div>
-        </form>
-      </div>
+  
 
 <div class="row">
 

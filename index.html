@@ -5,11 +5,13 @@
 	<script type="text/javascript"></script>
 	<title> Probando ajax </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="artyom.min.js"></script>
+
 	
 </head>
 <body>
 	<form action="#">
-		<textarea id="h-trad-text" placeholder="Ingrese su frase a traducir" maxlength="140" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all" style="height: 52px; width: 90%;"></textarea>
+		<textarea id="h-trad-text" placeholder="Ingrese su frase a traducir" maxlength="140" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all" style="height: 52px; width: 90%; display:none;"></textarea>
 
 		<button type="button" class="btn btn-primary" id="ws-btn-trad">Traducir</button>
 
@@ -23,8 +25,29 @@
 </body>
 <script type="text/javascript">
  $('#ws-btn-trad').bind("click", function(){
+  UserDictation.start();
     traducirSpaCol();
   }); 
+
+// RECONOCIMIETO DE VOZ
+var UserDictation = artyom.newDictation({
+    continuous:true, // Activar modo continuous if HTTPS connection
+    onResult:function(text){
+        // Mostrar texto en consola
+        console.log(text);
+    },
+    onStart:function(){
+        console.log("Dictado iniciado");
+    },
+    onEnd:function(){
+        alert("Dictado detenido por el usuario");
+    }
+});
+
+
+
+
+ // LOGICA DE TEXTO A IMAGEN
 
 	$tradInput = $('#h-trad-text'); // Texto enviado por el usuario
 
