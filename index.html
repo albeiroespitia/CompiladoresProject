@@ -7,7 +7,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="artyom/artyom.js"></script>
   <script src="artyom/artyomCommands.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+          
 	
 
 
@@ -25,7 +30,16 @@
 
     </ul>
   </div>
+
+    
+
+
   <script type="text/javascript">
+
+  $(document).ready(function(){
+      $('.carousel').carousel();
+    });
+
  $('#ws-btn-esc').bind("click", function(){
   UserDictation.start();
     
@@ -136,11 +150,12 @@ var UserDictation = artyom.newDictation({
     $slideshow.html('');
 
       var cantidad = $trad.length;
+   $slideshow.append("<div class='carousel'>"); 
     
     for (var i=0; i<cantidad; i++){
-    $slideshow.append( "<li> <img src='Galeria/"+$trad[i]['link']+"'> </li>" );
+    $slideshow.append( "<a class='carousel-item' href='#"+i+"'> <img src='Galeria/"+$trad[i]['link']+"'> </a>" );
     }    
-
+     $slideshow.append( "</div>">);
 
 
   }
