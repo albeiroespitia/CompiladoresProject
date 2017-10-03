@@ -12,7 +12,7 @@
 
  
     <div id="modal1" class="modal">
-        <form action="../../../../Controller/ControllerImagen.php" id="add-form" method="POST" enctype="multipart/form-data">
+        <form action="../../Controller/ControllerImagen.php" id="add-form" method="POST" enctype="multipart/form-data">
         <div class="modal-content">
         <input type="hidden" name="idUser" value="<?=$_SESSION['idUsuario'];?>"></input>
         <div class="row">

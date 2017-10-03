@@ -15,27 +15,7 @@ $.holdReady(false);
 
 $(document).ready(function() {
 	
-	$('#add-form').submit(function(e){
-		e.preventDefault();
-		var nombreCiudad = $('input[name="nombreCiudad"]').val();
-		$.ajax({
-			url: '/CompiladoresProject/Controller/ControllerImagen.php',
-			data : {tipo : 'agregar',nombreCiudad: nombreCiudad},
-			type : 'POST',
-			success: function(res){
-				if(res == 'Error'){
-					$('.error-create').html('Hubo un error al ingresar la nueva ciudad');
-				}else{
-					 Materialize.toast('Ciudad creada exitosamente!', 2000) 
-					 reload();
-					 $('#modal1').modal('close');
-					 $('.error-create').html('');
-					$('input[name="nombreCiudad"]').val(' ');
-				}
-
-			}
-		})
-	})
+	
 
 	$('#edit-form').submit(function(e){
 		e.preventDefault();

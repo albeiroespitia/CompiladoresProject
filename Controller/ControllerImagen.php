@@ -43,41 +43,29 @@
 		}
 
 
+
+
 	}
 
-
-if(isset($_POST['inputImage'])){
+	if(isset($_POST['inputImage'])){
 
     $res=new ImagenDAO();
     $descripcion = $_POST['descripcionI'];
+
+
     $nameImage=$_FILES['uploadFile']['name'];
 
     $ruta= $_SERVER['DOCUMENT_ROOT']."/CompiladoresProject/Galeria/";
 
     move_uploaded_file($_FILES['uploadFile']['tmp_name'],$ruta.$nameImage);
 
- 	$res->crearImagen($descripcion,$nameImage);
+    $res->crearImagen($descripcion,$nameImage);
 
+    header('Location:../Views/Admin/admin.php');
   }
 
-  if(isset($_POST['inputImageEditar'])){
-
-    $res=new ImagenProductoDAO();
-    $idImagen = $_POST['idImagen'];
-    $descripcion = $_POST['descripcionEditar'];
-    $productoP = $_POST['productoPE'];
 
 
-    $nameImage=$_FILES['uploadFile']['name'];
-
-    $ruta= $_SERVER['DOCUMENT_ROOT']."/ProyectoDB/Galeria/ImagenesProducto/";
-
-    move_uploaded_file($_FILES['uploadFile']['tmp_name'],$ruta.$nameImage);
-
-    $res->editarImagen($idImagen,$nameImage,$descripcion,$productoP);
-
-    header('Location:../Views/Admin/Views/ImagenProducto/imagenproducto.php');
-  }
 
 
  ?>
