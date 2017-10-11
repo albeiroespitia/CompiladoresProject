@@ -19,11 +19,11 @@ $(document).ready(function() {
 
 	$('#edit-form').submit(function(e){
 		e.preventDefault();
-		var nuevoNombreCiudad = $('input[name="nuevoNombreCiudad"]').val();
-		console.log(nuevoNombreCiudad);
+		var nuevoNombreImagen = $('input[name="nuevoNombreImagen"]').val();
+		console.log(nuevoNombreImagen);
 		$.ajax({
 			url: '/CompiladoresProject/Controller/ControllerImagen.php',
-			data : {tipo : 'editar', idCiudad: pk1 , nombreCiudad: nuevoNombreCiudad},
+			data : {tipo : 'editar', idImagen: pk1 , nombreImagen: nuevoNombreImagen, linkImagen: pk3},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
@@ -40,16 +40,17 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.borrar' ,function(){	
-		var idCiudad = $(this).closest('tr').find('#idCiudad').html();
+		console.log
+		var idImagen = $(this).closest('tr').find('#idImagenProducto').html();
 		$.ajax({
 			url: '/CompiladoresProject/Controller/ControllerImagen.php',
-			data : {tipo : 'eliminar',idCiudad: idCiudad},
+			data : {tipo : 'eliminar',idImagen: idImagen},
 			type : 'POST',
 			success: function(res){
 				if(res == 'Error'){
 					Materialize.toast('Error al eliminar la ciudad, Verifica que no este siendo usada!', 2000);
 				}else{
-					Materialize.toast('Ciudad eliminada exitosamente!', 2000);
+					Materialize.toast('Imagen eliminada exitosamente!', 2000);
 					reload();
 				}
 			}
@@ -58,10 +59,11 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '.editar' ,function(){
-		    pk1 = $(this).closest('tr').find('#idCiudad').html();
-		    pk2 = $(this).closest('tr').find('#nombre').html();
+		    pk1 = $(this).closest('tr').find('#idImagenProducto').html();
+		    pk2 = $(this).closest('tr').find('#descripcion').html();
+		    pk3 = $(this).closest('tr').find('Imagen').html();
 
-			$('input[name="nuevoNombreCiudad"]').val(pk2);
+			$('input[name="nuevoNombreImagen"]').val(pk2);
 	});
 
 

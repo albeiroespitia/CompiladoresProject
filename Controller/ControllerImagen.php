@@ -27,14 +27,26 @@
 			
 
 		}
-
+/*
+		if($_POST['tipo'] == 'editar'){
+			$imagenDAO = new ImagenDAO();
+			$idImagen = $_POST['idImagen'];
+			$nombreImagen = $_POST['nombre'];
+			$linkImagen = $_POST['link']
+			$errores = $imagenDAO->editarImagen($idImagen,$nombreImagen,$linkImagen);
+			if($errores == 0){
+				echo 'Error';
+			}
 		
 
+		}
+		
+*/
 		
 		if($_POST['tipo'] == 'eliminar'){
 			$imagenDAO = new ImagenDAO();
 			$idImagenProducto = $_POST['idImagen'];
-			$errores = $imagenDAO->borrarImagen($idImagen);
+			$errores = $imagenDAO->borrarImagen($idImagenProducto);
 			if($errores == 0){
 				echo 'Error';
 			}
