@@ -142,8 +142,10 @@ var UserDictation = artyom.newDictation({
       generarSlideshow($trad);
     });
   }
+  //Jose
 
   generarSlideshow = function($trad){
+ 
     $slideshow = $('#ws-translator');
     $slideshow.html('');
 
@@ -154,7 +156,7 @@ var UserDictation = artyom.newDictation({
     }    
      
 $('.carousel').carousel();
-
+$('.carousel.carousel-slider').carousel({fullWidth: true});
   }
 </script>	
 </body></html>
