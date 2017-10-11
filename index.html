@@ -152,11 +152,26 @@ var UserDictation = artyom.newDictation({
       var cantidad = $trad.length;
 
     for (var i=0; i<cantidad; i++){
-    $slideshow.append( "<a class='carousel-item' href='#"+i+"'> <img src='Galeria/"+$trad[i]['link']+"'> </a>" );
+    $slideshow.append( "<a class='carousel-item' href='#"+i+"'> <img id='caja1' src='Galeria/"+$trad[i]['link']+"'> style='margin-top: 0px;' </a>" );
+    $slideshow.append( "<button type='button' class='btn btn-primary' onclick='mostrar()'' >Reproducir</button>");
     }    
      
 $('.carousel').carousel();
 $('.carousel.carousel-slider').carousel({fullWidth: true});
   }
+   function mostrar() {
+          
+          
+          n = n - 240;
+          $('#caja1').css("margin-top", n+"px");
+          if(n!=-2880){
+            setTimeout("mostrar()",150);
+          }else{
+          $('#caja1').css("margin-top", "0px"); 
+          n=0;
+          }
+          
+          
+      }
 </script>	
 </body></html>
