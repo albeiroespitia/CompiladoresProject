@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta http-equiv="Access-Control-Allow-Origin" content="*">
-	<script type="text/javascript"></script>
-	<title> Probando ajax </title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript"></script>
+  <title> Probando ajax </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
@@ -12,18 +12,18 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
           
-	
+  
 
 
 </head>
 <body>
-	<form action="#">
-		<textarea id="h-trad-text" placeholder="Ingrese su frase a traducir" maxlength="140" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all" style="height: 52px; width: 90%; display:none;"></textarea>
+  <form action="#">
+    <textarea id="h-trad-text" placeholder="Ingrese su frase a traducir" maxlength="140" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all" style="height: 52px; width: 90%; display:none;"></textarea>
 
-		<button type="button" class="btn btn-primary" id="ws-btn-esc">Escuchar</button>
+    <button type="button" class="btn btn-primary" id="ws-btn-esc">Escuchar</button>
     <button type="button" class="btn btn-primary" id="ws-btn-trad">Traducir</button>
 
-	</form>
+  </form>
   <div class="ws-wrapper">
     <ul id="ws-translator">
       <li><img src="http://hetah.net/_assets/modules/traductor/img/conector_espera.jpg"/></li>
@@ -40,20 +40,16 @@
   var n =0;
   var cantidad = 0;
   var FrameActual = 1;
+  var textoAnt = "";
   $textoarea = $("#h-trad-text");
-
  $('#ws-btn-esc').bind("click", function(){
   $('#h-trad-text').text('');
   
   }); 
  $('#ws-btn-trad').bind("click", function(){
-
  // traducirSpaCol();
  
   }); 
-
-
-
 // RECONOCIMIETO DE VOZ
  var texto = '';
         if (annyang) {
@@ -67,8 +63,9 @@
             var Limpiar = function(tag) {
               texto = '';
               $textoarea.text('');
-           
-
+              $textoAnt = "";
+              cantidad = 0;
+              FrameActual = 1;
             }  
             var commands = {
                 'limpiar': function () {
@@ -78,29 +75,21 @@
                     ImprimirTexto
                 
             };
-            annyang.setLanguage('es-MX');
+            annyang.setLanguage('es-CO');
             annyang.addCommands(commands);
             annyang.debug();
             annyang.start({ continuous: false });
         }
-
 //SS
 /*
         console.log(text);
         $textoarea.text(text);
         traducirSpaCol();
-
         MostrarDesde(1);*/
-
   
 // FIN NUEVAS FUNCIONES ARTYOM
-
  // LOGICA DE TEXTO A IMAGEN
-
   $tradInput = $('#h-trad-text'); // Texto enviado por el usuario
-
-
-
    traducirSpaCol = function(){
     // validacion
     if (!$tradInput.val().length){
@@ -118,7 +107,6 @@
       tradTxtTmp = tradTxtTmp.replace(/(Ã­)/g,'i');
       tradTxtTmp = tradTxtTmp.replace(/(Ã³)/g,'o');
       tradTxtTmp = tradTxtTmp.replace(/(Ãº)/g,'u');
-
       tradTxtTmp = tradTxtTmp.split(/\s+/);
   // 2. Elimino palabras no utilizadas en lengua de signos    
     var tradTxtTmpL = tradTxtTmp.length,
@@ -140,11 +128,8 @@
     tradTxt = tradTxtTmp2;
    //  console.log(tradTxt);
     ajaxTraduccion();
-
   }
-
   ajaxTraduccion = function(){
-
     var request = $.ajax({
      type: "POST",
       url: 'peticion.php',
@@ -153,23 +138,23 @@
       dataType: "json",
      
     });
-
     // recibo JSON con traduccion palabra, imagen, gesto-flecha
     request.done( function( $trad ) {  
    
-      if ($trad==='sinTraduccion'){
+      if ($trad==textoAnt){
         alert('La frase ingresada no posee traducciÃ³n');
-        $loader.fadeOut();
+        
         return;
-      }
+      }else{
     console.log($trad);
       
-      
+            
       generarSlideshow($trad);
+      textoAnt = $trad + textoAnt;
+      }
     });
   }
   //Jose
-
   generarSlideshow = function($trad){
  
     $slideshow = $('#ws-translator');
@@ -177,58 +162,47 @@
     /*$slideshow.hover(function() {
         $("li", this).css('display', 'none');
     });*/ 
-
       cantidad = $trad.length;
-
     for (var i=0; i<cantidad; i++){
     $slideshow.append( "<li id='imagen"+(i+1)+"' style='display: none;'><img id='caja1'  style='margin-top: 0px;' src='Galeria/"+$trad[i]['link']+"'/> </li>" );
    
     }
-    $slideshow.append("<center>");
     for (var i=1; i<=cantidad; i++){
     $slideshow.append(" <a href='#' onclick='MostrarDesde("+i+")'> "+ $trad[i-1]['nombre'] +" <a/>");
     }
-    $slideshow.append("<center>");
     //$('#ws-translator li:last-child').css('display', 'block');
     //var n_hijos = $('#ws-translator li').size();   
   
-
-
-
-
     
      MostrarDesde(FrameActual);
-     FrameActual = FrameActual + (cantidad);
+     if(FrameActual >= 3){
+      FrameActual= FrameActual -1;
+     }
+     FrameActual = FrameActual + ($('#ws-translator li').length);
         
     } 
      
      function MostrarDesde($i){
       var i = parseInt($i);
-
-      BorrarImgVisibles();
-      /*  
-        if(i>1){
-          $('#ws-translator li:nth-child('+(i-1)+')').css('display', 'none');
-        }
-        */
+      BorrarImgVisibles(i);
+      
         $('#ws-translator li:nth-child('+i+')').css('display', 'block')
       
         mostrar(parseInt(i));
-        if( i != (cantidad) ){
-        setTimeout("MostrarDesde("+(i+1)+")",1950);
+        if( i != ($('#ws-translator li').length) ){
+        setTimeout("MostrarDesde("+(i+1)+")",150);
       }else{
         i=0;
       }
       
      }
-     function BorrarImgVisibles(){
-      for(var i=1; i<=cantidad; i++){
-        if(  $('#ws-translator li:nth-child('+i+')').is(":visible") ){
+     function BorrarImgVisibles($k){
+      for(var i=1; i<=$('#ws-translator li').length; i++){
+        if(  i!=$k && $('#ws-translator li:nth-child('+i+')').is(":visible") ){
           $('#ws-translator li:nth-child('+i+')').css('display', 'none');
         }
       }
      }
-
    function mostrar($i) {
           //console.log($('#ws-translator li').find("img"));     
          
@@ -238,14 +212,16 @@
           
            $('#imagen'+($i)+' :nth-child(1)').css("margin-top", n+"px");
           
-          if(n!=-2880){
+          if(n > -2880){
             setTimeout("mostrar("+i+")",150);
           }else{
            $('#imagen'+($i)+' :nth-child(1)').css("margin-top", "0px"); 
           n=0;
+           $('#ws-translator li:nth-child('+i+')').css('display', 'block');
+        
           }
           
       }
-</script>	
+</script> 
 </body>
 </html>

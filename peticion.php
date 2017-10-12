@@ -39,6 +39,7 @@
     return $rawdata; //devolvemos el array
 }
 	$txt = $_POST['txt']; // Variable post
+	//$txt = $_GET['txt'];
 	$myArray = [];
 	foreach ($txt as &$imagen) {
 	$sql = 'SELECT * FROM imagen WHERE nombre = "'.$imagen.'" ';
@@ -46,8 +47,23 @@
 	$myArray =  array_merge($myArray, getArraySQL($sql));
     
 	}
-	echo json_encode($myArray);
-
+	if(empty($myArray)){
 	
+		
+		$ArrayTexto = [];
+		foreach ($txt as &$text2) {
+		$ArrayTexto = str_split( $text2);
+		}
+
+		$myArray = [];	
+		foreach ($ArrayTexto as &$imagen) {
+			$sql = 'SELECT * FROM imagen WHERE nombre = "'.$imagen.'" ';
+			
+			$myArray =  array_merge($myArray, getArraySQL($sql));
+		    
+		}
+
+	}
+	echo json_encode($myArray);	
    
 ?>
