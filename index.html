@@ -26,49 +26,29 @@
 
 	</form>
   <div class="ws-wrapper">
-    <ul class='carousel' id="ws-translator">
-
+    <ul id="ws-translator">
+      <li><img src="http://hetah.net/_assets/modules/traductor/img/conector_espera.jpg"/></li>
     </ul>
-    <button type='button' class='btn btn-primary' onclick='mostrar(1)' >Reproducir</button>
+    <button type='button' class='btn btn-primary' onclick='MostrarDesde(1)' >Reproducir</button>
   </div>
 
     
 
 
   <script type="text/javascript">
-// jQuery
-var onImagesLoad = function(callback){
-  var images = 0,
-    check;
-  $("img").each(function(key){
-    var item = $(this),
-      img = new Image();
-    images++;
-    img.onload = function(){
-      images--;
-    };
-    img.src = item.attr("src");
-  });
-  check = setInterval(function(){
-    if(images === 0){
-      callback();
-      clearInterval(check);
-      return;
-    }
-  }, 50);
-};
 
   var n =0;
-
+  var cantidad = 0;
 
  $('#ws-btn-esc').bind("click", function(){
+  $('#h-trad-text').text('');
   UserDictation.start();
     
   }); 
  $('#ws-btn-trad').bind("click", function(){
   UserDictation.stop();
-  traducirSpaCol();
-  //mostrar();
+ // traducirSpaCol();
+ 
   }); 
 $textoarea = $("#h-trad-text");
 
@@ -80,6 +60,8 @@ var UserDictation = artyom.newDictation({
         // Mostrar texto en consola
         console.log(text);
         $textoarea.text(text);
+        traducirSpaCol();
+        MostrarDesde(1);
     },
     onStart:function(){
         console.log("Dictado iniciado");
@@ -175,13 +157,17 @@ var UserDictation = artyom.newDictation({
         $("li", this).css('display', 'none');
     });*/ 
 
-      var cantidad = $trad.length;
+      cantidad = $trad.length;
 
     for (var i=0; i<cantidad; i++){
     $slideshow.append( "<li id='imagen"+(i+1)+"' style='display: none;'><img id='caja1'  style='margin-top: 0px;' src='Galeria/"+$trad[i]['link']+"'/> </li>" );
    
     }
-
+    $slideshow.append("<center>");
+    for (var i=1; i<=cantidad; i++){
+    $slideshow.append(" <a href='#' onclick='MostrarDesde("+i+")'> "+ $trad[i-1]['nombre'] +" <a/>");
+    }
+    $slideshow.append("<center>");
     //$('#ws-translator li:last-child').css('display', 'block');
     //var n_hijos = $('#ws-translator li').size();   
   
@@ -190,27 +176,36 @@ var UserDictation = artyom.newDictation({
 
 
     
-     MostrarDesde(1, parseInt(cantidad));
+     MostrarDesde(1);
 
         
     } 
      
-     function MostrarDesde($i, $cantidad){
+     function MostrarDesde($i){
       var i = parseInt($i);
-      var cantidad = parseInt($cantidad);
-      
-      if(i>1){
-        $('#ws-translator li:nth-child('+(i-1)+')').css('display', 'none');
-      }
+
+      BorrarImgVisibles();
+      /*  
+        if(i>1){
+          $('#ws-translator li:nth-child('+(i-1)+')').css('display', 'none');
+        }
+        */
         $('#ws-translator li:nth-child('+i+')').css('display', 'block')
       
         mostrar(parseInt(i));
         if( i != (cantidad) ){
-        setTimeout("MostrarDesde("+(i+1)+", "+cantidad+")",1950);
+        setTimeout("MostrarDesde("+(i+1)+")",1950);
       }else{
-        $i=0;
+        i=0;
       }
-      //   $('#imagen'+(i)+' :nth-child(1)').ajaxStart(function() { $(this).show(); });
+      
+     }
+     function BorrarImgVisibles(){
+      for(var i=1; i<=cantidad; i++){
+        if(  $('#ws-translator li:nth-child('+i+')').is(":visible") ){
+          $('#ws-translator li:nth-child('+i+')').css('display', 'none');
+        }
+      }
      }
 
    function mostrar($i) {
