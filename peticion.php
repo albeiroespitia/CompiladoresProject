@@ -47,6 +47,8 @@
 	$myArray =  array_merge($myArray, getArraySQL($sql));
     
 	}
+
+	/*
 	if(empty($myArray)){
 	
 		
@@ -64,6 +66,7 @@
 		}
 
 	}
+	*/
 	echo json_encode($myArray);	
    
 ?>

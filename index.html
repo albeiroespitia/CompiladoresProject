@@ -39,8 +39,8 @@
                              
   var n =0;
   var cantidad = 0;
+  var tradAnt= "";
   var FrameActual = 1;
-  var textoAnt = "";
   $textoarea = $("#h-trad-text");
  $('#ws-btn-esc').bind("click", function(){
   $('#h-trad-text').text('');
@@ -63,8 +63,9 @@
             var Limpiar = function(tag) {
               texto = '';
               $textoarea.text('');
-              $textoAnt = "";
+              n =0;
               cantidad = 0;
+              tradAnt= "";
               FrameActual = 1;
             }  
             var commands = {
@@ -75,7 +76,7 @@
                     ImprimirTexto
                 
             };
-            annyang.setLanguage('es-CO');
+            annyang.setLanguage('es-MX');
             annyang.addCommands(commands);
             annyang.debug();
             annyang.start({ continuous: false });
@@ -128,7 +129,7 @@
     tradTxt = tradTxtTmp2;
    //  console.log(tradTxt);
     ajaxTraduccion();
-  }
+   }
   ajaxTraduccion = function(){
     var request = $.ajax({
      type: "POST",
@@ -141,17 +142,15 @@
     // recibo JSON con traduccion palabra, imagen, gesto-flecha
     request.done( function( $trad ) {  
    
-      if ($trad==textoAnt){
-        alert('La frase ingresada no posee traducciÃ³n');
-        
+      if ($trad==tradAnt){
+        console.log('La frase ingresada no posee traduccion');
         return;
-      }else{
+      }
     console.log($trad);
       
-            
+      
       generarSlideshow($trad);
-      textoAnt = $trad + textoAnt;
-      }
+   tradAnt = $trad + tradAnt;
     });
   }
   //Jose
@@ -175,30 +174,28 @@
   
     
      MostrarDesde(FrameActual);
-     if(FrameActual >= 3){
-      FrameActual= FrameActual -1;
-     }
-     FrameActual = FrameActual + ($('#ws-translator li').length);
+     FrameActual = FrameActual + $('#ws-translator li').length;
         
     } 
      
      function MostrarDesde($i){
       var i = parseInt($i);
-      BorrarImgVisibles(i);
-      
+       BorrarImgVisibles(i);
         $('#ws-translator li:nth-child('+i+')').css('display', 'block')
       
         mostrar(parseInt(i));
-        if( i != ($('#ws-translator li').length) ){
-        setTimeout("MostrarDesde("+(i+1)+")",150);
+        if( i != (cantidad) ){
+     
+      
+        setTimeout("MostrarDesde("+(i+1)+")",1950);
       }else{
         i=0;
       }
       
      }
      function BorrarImgVisibles($k){
-      for(var i=1; i<=$('#ws-translator li').length; i++){
-        if(  i!=$k && $('#ws-translator li:nth-child('+i+')').is(":visible") ){
+      for(var i=1; i<=cantidad; i++){
+        if( i!=$k && $('#ws-translator li:nth-child('+i+')').is(":visible") ){
           $('#ws-translator li:nth-child('+i+')').css('display', 'none');
         }
       }
@@ -212,13 +209,11 @@
           
            $('#imagen'+($i)+' :nth-child(1)').css("margin-top", n+"px");
           
-          if(n > -2880){
+          if(n!=-2880){
             setTimeout("mostrar("+i+")",150);
           }else{
            $('#imagen'+($i)+' :nth-child(1)').css("margin-top", "0px"); 
           n=0;
-           $('#ws-translator li:nth-child('+i+')').css('display', 'block');
-        
           }
           
       }
