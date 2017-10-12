@@ -5,8 +5,7 @@
 	<script type="text/javascript"></script>
 	<title> Probando ajax </title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="artyom/artyom.js"></script>
-  <script src="artyom/artyomCommands.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <link rel="stylesheet" href="css/estilo.css">
@@ -36,43 +35,65 @@
 
 
   <script type="text/javascript">
-
+   
+                             
   var n =0;
   var cantidad = 0;
+  var FrameActual = 1;
+  $textoarea = $("#h-trad-text");
 
  $('#ws-btn-esc').bind("click", function(){
   $('#h-trad-text').text('');
-  UserDictation.start();
-    
+  
   }); 
  $('#ws-btn-trad').bind("click", function(){
-  UserDictation.stop();
+
  // traducirSpaCol();
  
   }); 
-$textoarea = $("#h-trad-text");
+
+
 
 // RECONOCIMIETO DE VOZ
-var UserDictation = artyom.newDictation({
-    continuous:true, // Activar modo continuous if HTTPS connection
-    lang: "es-ES",
-    onResult:function(text){
-        // Mostrar texto en consola
+ var texto = '';
+        if (annyang) {
+            // Let's define our first command. First the text we expect, and then the function it should call
+            var ImprimirTexto = function(tag) {
+              texto = texto +" "+ tag;
+              $textoarea.text(texto);
+              traducirSpaCol();
+              //MostrarDesde(1);
+            }
+            var Limpiar = function(tag) {
+              texto = '';
+              $textoarea.text('');
+           
+
+            }  
+            var commands = {
+                'limpiar': function () {
+                    Limpiar();
+                },
+                '*tag' :
+                    ImprimirTexto
+                
+            };
+            annyang.setLanguage('es-MX');
+            annyang.addCommands(commands);
+            annyang.debug();
+            annyang.start({ continuous: false });
+        }
+
+//SS
+/*
         console.log(text);
         $textoarea.text(text);
         traducirSpaCol();
-        MostrarDesde(1);
-    },
-    onStart:function(){
-        console.log("Dictado iniciado");
-    },
-    onEnd:function(){
-        console.log("Dictado detenido por el usuario");
-    }
-});
 
+        MostrarDesde(1);*/
 
-
+  
+// FIN NUEVAS FUNCIONES ARTYOM
 
  // LOGICA DE TEXTO A IMAGEN
 
@@ -176,8 +197,8 @@ var UserDictation = artyom.newDictation({
 
 
     
-     MostrarDesde(1);
-
+     MostrarDesde(FrameActual);
+     FrameActual = FrameActual + (cantidad);
         
     } 
      
