@@ -26,16 +26,39 @@
 
 	</form>
   <div class="ws-wrapper">
-    <div class='carousel' id="ws-translator">
+    <ul class='carousel' id="ws-translator">
 
-    </div>
+    </ul>
+    <button type='button' class='btn btn-primary' onclick='mostrar(1)' >Reproducir</button>
   </div>
 
     
 
 
   <script type="text/javascript">
+// jQuery
+var onImagesLoad = function(callback){
+  var images = 0,
+    check;
+  $("img").each(function(key){
+    var item = $(this),
+      img = new Image();
+    images++;
+    img.onload = function(){
+      images--;
+    };
+    img.src = item.attr("src");
+  });
+  check = setInterval(function(){
+    if(images === 0){
+      callback();
+      clearInterval(check);
+      return;
+    }
+  }, 50);
+};
 
+  var n =0;
 
 
  $('#ws-btn-esc').bind("click", function(){
@@ -45,7 +68,7 @@
  $('#ws-btn-trad').bind("click", function(){
   UserDictation.stop();
   traducirSpaCol();
-  mostrar();
+  //mostrar();
   }); 
 $textoarea = $("#h-trad-text");
 
@@ -148,31 +171,65 @@ var UserDictation = artyom.newDictation({
  
     $slideshow = $('#ws-translator');
     $slideshow.html('');
+    /*$slideshow.hover(function() {
+        $("li", this).css('display', 'none');
+    });*/ 
 
       var cantidad = $trad.length;
 
     for (var i=0; i<cantidad; i++){
-    $slideshow.append( "<li style='display: block;'><img id='caja1'  style='margin-top: 0px;' src='Galeria/"+$trad[i]['link']+"' ></li>" );
-    $slideshow.append( "<button type='button' class='btn btn-primary' onclick='mostrar()' >Reproducir</button>");
-    }    
+    $slideshow.append( "<li id='imagen"+(i+1)+"' style='display: none;'><img id='caja1'  style='margin-top: 0px;' src='Galeria/"+$trad[i]['link']+"'/> </li>" );
+   
+    }
+
+    //$('#ws-translator li:last-child').css('display', 'block');
+    //var n_hijos = $('#ws-translator li').size();   
+  
+
+
+
+
+    
+     MostrarDesde(1, parseInt(cantidad));
+
+        
+    } 
      
-$('.carousel').carousel();
-$('.carousel.carousel-slider').carousel({fullWidth: true});
-  }
-  var n =0;
-   function mostrar() {
-          
-          
+     function MostrarDesde($i, $cantidad){
+      var i = parseInt($i);
+      var cantidad = parseInt($cantidad);
+      
+      if(i>1){
+        $('#ws-translator li:nth-child('+(i-1)+')').css('display', 'none');
+      }
+        $('#ws-translator li:nth-child('+i+')').css('display', 'block')
+      
+        mostrar(parseInt(i));
+        if( i != (cantidad) ){
+        setTimeout("MostrarDesde("+(i+1)+", "+cantidad+")",1950);
+      }else{
+        $i=0;
+      }
+      //   $('#imagen'+(i)+' :nth-child(1)').ajaxStart(function() { $(this).show(); });
+     }
+
+   function mostrar($i) {
+          //console.log($('#ws-translator li').find("img"));     
+         
+         // console.log("El parametro es: "+($i+1));
+          var i = parseInt($i);
           n = n - 240;
-          $('#caja1').css("margin-top", n+"px");
+          
+           $('#imagen'+($i)+' :nth-child(1)').css("margin-top", n+"px");
+          
           if(n!=-2880){
-            setTimeout("mostrar()",150);
+            setTimeout("mostrar("+i+")",150);
           }else{
-          $('#caja1').css("margin-top", "0px"); 
+           $('#imagen'+($i)+' :nth-child(1)').css("margin-top", "0px"); 
           n=0;
           }
           
-          
       }
 </script>	
-</body></html>
+</body>
+</html>
