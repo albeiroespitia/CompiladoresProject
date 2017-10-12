@@ -36,7 +36,7 @@
 
   <script type="text/javascript">
    
-                             
+  var veces = 0;         
   var n =0;
   var cantidad = 0;
   var tradAnt= "";
@@ -60,14 +60,17 @@
               traducirSpaCol();
               //MostrarDesde(1);
             }
-            var Limpiar = function(tag) {
+            var Limpiar = function() {
+              
               texto = '';
               $textoarea.text('');
               n =0;
+               $('#ws-translator').html('');
               cantidad = 0;
               tradAnt= "";
               FrameActual = 1;
-            }  
+              
+            };
             var commands = {
                 'limpiar': function () {
                     Limpiar();
@@ -76,7 +79,7 @@
                     ImprimirTexto
                 
             };
-            annyang.setLanguage('es-MX');
+            annyang.setLanguage('es-CO');
             annyang.addCommands(commands);
             annyang.debug();
             annyang.start({ continuous: false });
@@ -155,7 +158,11 @@
   }
   //Jose
   generarSlideshow = function($trad){
- 
+    if(veces>=2){
+      console.log("La "+veces+" vez limpiar");
+      Limpiar();
+     } 
+
     $slideshow = $('#ws-translator');
     $slideshow.html('');
     /*$slideshow.hover(function() {
@@ -175,7 +182,8 @@
     
      MostrarDesde(FrameActual);
      FrameActual = FrameActual + $('#ws-translator li').length;
-        
+     veces = veces + 1;
+       
     } 
      
      function MostrarDesde($i){
@@ -195,7 +203,7 @@
      }
      function BorrarImgVisibles($k){
       for(var i=1; i<=cantidad; i++){
-        if( i!=$k && $('#ws-translator li:nth-child('+i+')').is(":visible") ){
+        if( $('#ws-translator li:nth-child('+i+')').is(":visible") ){
           $('#ws-translator li:nth-child('+i+')').css('display', 'none');
         }
       }
