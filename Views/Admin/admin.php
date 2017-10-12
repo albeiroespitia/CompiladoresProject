@@ -38,7 +38,40 @@
         </form>
       </div>
 
-  
+       <div id="modal2" class="modal">
+      <div class="modal-content">
+        <div class="row">
+          <form id="edit-form" action="" method="" class="col s12">
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
+                <input id="icon_prefix " type="text" name="nuevoNombre" class="validate" required>
+                <label for="icon_prefix" class="active"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
+                <input id="icon_prefix " type="text" name="nuevoTelefono" class="validate" required>
+                <label for="icon_prefix" class="active"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12"><i class="material-icons prefix active">account_circle</i>
+                <input id="icon_prefix " type="text" name="nuevoEmail" class="validate" required>
+                <label for="icon_prefix" class="active"></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 selectCiudadEditar">  
+              </div>
+            </div>
+            <div class="modal-footer">
+              <h6 class="error-create"></h6>
+              <button id="editButton" type="submit" class="modal-action waves-effect waves-green btn-flat"  name="editButon">Editar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 <div class="row">
 

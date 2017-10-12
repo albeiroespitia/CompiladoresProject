@@ -9,7 +9,7 @@
   <script src="artyom/artyomCommands.js"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
+  <link rel="stylesheet" href="css/estilo.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
           
@@ -45,7 +45,7 @@
  $('#ws-btn-trad').bind("click", function(){
   UserDictation.stop();
   traducirSpaCol();
-    
+  mostrar();
   }); 
 $textoarea = $("#h-trad-text");
 
@@ -152,13 +152,14 @@ var UserDictation = artyom.newDictation({
       var cantidad = $trad.length;
 
     for (var i=0; i<cantidad; i++){
-    $slideshow.append( "<a class='carousel-item' href='#"+i+"'> <img id='caja1' src='Galeria/"+$trad[i]['link']+"'> style='margin-top: 0px;' </a>" );
-    $slideshow.append( "<button type='button' class='btn btn-primary' onclick='mostrar()'' >Reproducir</button>");
+    $slideshow.append( "<li style='display: block;'><img id='caja1'  style='margin-top: 0px;' src='Galeria/"+$trad[i]['link']+"' ></li>" );
+    $slideshow.append( "<button type='button' class='btn btn-primary' onclick='mostrar()' >Reproducir</button>");
     }    
      
 $('.carousel').carousel();
 $('.carousel.carousel-slider').carousel({fullWidth: true});
   }
+  var n =0;
    function mostrar() {
           
           
