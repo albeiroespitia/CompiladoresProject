@@ -8,6 +8,7 @@
  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/estilo.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -16,22 +17,40 @@
 
 
 </head>
-<body>
-  <form action="#">
+<body style="background-color: #d35400;">
+
     <textarea id="h-trad-text" placeholder="Ingrese su frase a traducir" maxlength="140" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all" style="height: 52px; width: 90%; display:none;"></textarea>
 
-    <button type="button" class="btn btn-primary" id="ws-btn-esc">Escuchar</button>
-    <button type="button" class="btn btn-primary" id="ws-btn-trad">Traducir</button>
+   
+ 
 
-  </form>
-  <div class="ws-wrapper">
+     <div class="row">
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-image">
+<center>
+          <div class="ws-wrapper">
     <ul id="ws-translator">
       <li><img src="http://hetah.net/_assets/modules/traductor/img/conector_espera.jpg"/></li>
     </ul>
-    <button type='button' class='btn btn-primary' onclick='MostrarDesde(1)' >Reproducir</button>
-  </div>
-
     
+  </div>
+  <a  onclick='MostrarDesde(1)' class="btn-floating  waves-effect waves-light teal darken-2"><i class="material-icons">replay</i> </a>
+  
+</center>
+<br>
+          <span class="card-title teal-text"><strong>En-Se&ntildeas</strong></span>
+          <a  id="empezar" class="btn-floating halfway-fab waves-effect waves-light teal darken-2"><i class="material-icons">play_arrow</i> </a>
+           <!-- <a id="detener" class="btn-floating halfway-fab waves-effect waves-effect red"><i class="material-icons">stop</i></a> -->
+        </div>
+        <div class="card-content teal darken-1">
+          <p id="textotraducido" class="white-text">Este sistema de traducci&oacuten fue elaborado para mejorar la comunicaci&oacuten entre las personas sin limitaciones y las personas con limitaciones auditivas, mediante Iris, la int&eacuterprete animada desarrollada por la <a  class= "black-text" href="http://hetah.net">Fundaci&oacuten HETAH.</a>
+
+</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
   <script type="text/javascript">
@@ -46,12 +65,18 @@
   $('#h-trad-text').text('');
   
   }); 
- $('#ws-btn-trad').bind("click", function(){
- // traducirSpaCol();
- 
-  }); 
-// RECONOCIMIETO DE VOZ
  var texto = '';
+ $('#empezar').bind("click", function(){
+
+
+ $('#empezar').removeClass("teal");
+$('#empezar').addClass("red");
+ $("#empezar").html("<i class='material-icons'>stop</i>"); 
+$("#empezar").attr("id","detener");  
+
+// RECONOCIMIETO DE VOZ
+ 
+
         if (annyang) {
             // Let's define our first command. First the text we expect, and then the function it should call
             var ImprimirTexto = function(tag) {
@@ -65,7 +90,7 @@
               texto = '';
               $textoarea.text('');
               n =0;
-               $('#ws-translator').html('');
+               $('#textotraducido').html('');
               cantidad = 0;
               tradAnt= "";
               FrameActual = 1;
@@ -84,6 +109,16 @@
             annyang.debug();
             annyang.start({ continuous: false });
         }
+          }); 
+
+// Boton detener
+  $('#detener').bind("click", function(){
+     //annyang.stop();
+    $('#detener').removeClass("red");
+    $('#detener').addClass("teal");
+    $("#detener").html("<i class='material-icons'>play_arrow</i>"); 
+    $("#detener").attr("id","empezar"); 
+}); 
 //SS
 /*
         console.log(text);
@@ -174,7 +209,7 @@
    
     }
     for (var i=1; i<=cantidad; i++){
-    $slideshow.append(" <a href='#' onclick='MostrarDesde("+i+")'> "+ $trad[i-1]['nombre'] +" <a/>");
+    $('#textotraducido').append(" <a href='#' onclick='MostrarDesde("+i+")'> "+ $trad[i-1]['nombre'] +" <a/>");
     }
     //$('#ws-translator li:last-child').css('display', 'block');
     //var n_hijos = $('#ws-translator li').size();   

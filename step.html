@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title> </title>
+</head>
+<body>
+
+<script>
+	 $( document ).ready(function() {
+			$( "li" ).animate({
+		  opacity: .5,
+		  height: "50%"
+		}, {
+		  step: function( now, fx ) {
+		    var data = fx.elem.id + " " + fx.prop + ": " + now;
+		    $( "body" ).append( "<div>" + data + "</div>" );
+		  }
+		});
+	});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title> Prueba  de slider </title>
+</head>
+<style type="text/css">
+	
+	#ws-translator li {
+    max-width: 320px;
+    max-height: 250px;
+    overflow: hidden;
+	}
+
+	#ws-translator li img {
+    margin-top: -240px;
+	}
+</style>
+
+<body>
+	<ul id="ws-translator">
+		<li style="display: block;">
+			<img id="caja1" src="http://hetah.net/_assets/modules/traductor/img/h/hola.jpg" alt="hola" style="margin-top: 0px;" >
+		</li>
+	</ul>
+	<input type="button" value="Reproducir">
+
+	<script>
+		var n = 0;
+		
+		 $( document ).ready(function(){
+		 	mostrar();
+		 });
+		
+    
+	</script>
+</body>
+
+</html>
