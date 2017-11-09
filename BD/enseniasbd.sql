@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2017 a las 05:40:57
+-- Tiempo de generación: 09-11-2017 a las 22:36:14
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -67,7 +67,32 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (36, 'W', 'W.jpg'),
 (37, 'X', 'X.jpg'),
 (38, 'Y', 'Y.jpg'),
-(39, 'Z', 'Z.jpg');
+(39, 'Z', 'Z.jpg'),
+(40, 'El', 'El.jpg'),
+(41, 'Objetivo', 'Objetivo.jpg'),
+(42, 'Que', 'Que.jpg'),
+(43, 'Sordos', 'Sordos.jpg'),
+(44, 'Puedan', 'Puedan.jpg'),
+(45, 'Entender', 'Entender.jpg'),
+(46, 'Clases', 'Clases.jpg'),
+(47, 'Con', 'Con1.jpg'),
+(50, 'Bienvenidos', 'Bienvenido.jpg'),
+(51, 'Semana', 'Semana.jpg'),
+(53, 'Ciencia', 'Ciencia.jpg'),
+(54, 'Estamos', 'Estamos.jpg'),
+(55, 'En La', 'En.jpg'),
+(56, 'La', 'La.jpg'),
+(57, 'Del', 'Del.jpg'),
+(58, 'Clase', 'Clases.jpg'),
+(62, 'Lenguaje', 'Lenguaje.jpg'),
+(65, 'Es', 'Es.jpg'),
+(66, 'En', 'En.jpg'),
+(67, 'De', 'De.jpg'),
+(68, 'Compiladores', 'Compiladores.jpg'),
+(69, 'Magdalena', 'Magdalena.jpg'),
+(70, 'Auditiva', 'Auditiva.jpg'),
+(71, 'Limitacion', 'Limitacion.jpg'),
+(72, 'Personas', 'Personas.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -87,7 +112,7 @@ ALTER TABLE `imagen`
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `idImagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `idImagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
