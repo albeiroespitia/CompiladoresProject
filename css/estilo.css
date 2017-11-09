@@ -3,3 +3,16 @@
     max-height: 240px;
     overflow: hidden;
 }
+
+.row .col.m6 {
+    width: 50%;
+    margin-left: 25%;
+    left: auto;
+    right: auto;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
