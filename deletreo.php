@@ -27,39 +27,20 @@
      disconnectDB($conexion); //desconectamos la base de datos
     return $rawdata; //devolvemos el array
 }
-	$txt = $_POST['txt']; // Variable post
-	//$txt = $_GET['txt'];
+	//$txt = $_POST['txt']; // Variable post
+	$txt = array();
+	$txt = $_GET["txt"];
 	$myArray = [];
-	$auxArray = [];
 	//echo $txt;
-	
-	foreach ($txt as &$imagen) {
-		$sql = 'SELECT * FROM imagen WHERE nombre = "'.$imagen.'" ';
-		$auxArray = getArraySQL($sql);
-		if(empty($auxArray)){
-			$data = file_get_contents("http://localhost/CompiladoresProject/deletreo.php?txt=".$imagen);
-			$auxArray = json_decode($data, true);
-		}			
-		$myArray =  array_merge($myArray, $auxArray );
-	    	
-	}
-	/*
-	if(empty($myArray)){
-	
-		
-		$ArrayTexto = [];
-		foreach ($txt as &$text2) {
-		$ArrayTexto = str_split( $text2);
-		}
-		$myArray = [];	
-		foreach ($ArrayTexto as &$imagen) {
-			$sql = 'SELECT * FROM imagen WHERE nombre = "'.$imagen.'" ';
-			
+	$imagen = $txt;
+	// foreach ($txt as &$imagen) {
+		for ($i = 0; $i < strlen($imagen); $i++) {
+			$sql = 'SELECT * FROM imagen WHERE nombre = "'.$imagen[$i].'" ';
 			$myArray =  array_merge($myArray, getArraySQL($sql));
-		    
-		}
+	//}
+    
 	}
-	*/
+	
 	echo json_encode($myArray);	
    
 ?>

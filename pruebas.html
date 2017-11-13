@@ -58,7 +58,7 @@
   <script type="text/javascript">
    
    var PrimeraVez = 0;
-
+   var desde=0;
 
   var veces = 0;         
   var n =0;
@@ -241,7 +241,11 @@ $("#empezar").attr("id","detener");
     console.log("Numero de li: "+$('#ws-translator li').length);
     if(PrimeraVez==0){
       PrimeraVez=1;
-      MostrarDesde(1);
+      
+      if(desde==0){
+      	desde=1;
+      }
+      MostrarDesde(desde);
       
     }  
    
@@ -258,10 +262,11 @@ $("#empezar").attr("id","detener");
       mostrar(parseInt(i));
 
         if( i < $('#ws-translator li').length || i==1 ){
-        setTimeout("MostrarDesde("+(i+1)+")",1950);
+        setTimeout("MostrarDesde("+(i+1)+")",1350);
       }else{
         NoQuedaInvisible();
         PrimeraVez=0;
+        desde=$('#ws-translator li').length + 1;
       }
       
      }
@@ -284,7 +289,7 @@ $("#empezar").attr("id","detener");
            $('#imagen'+($i)+' :nth-child(1)').css("margin-top", n+"px");
           
           if(n!=-2880){
-            setTimeout("mostrar("+i+")",150);
+            setTimeout("mostrar("+i+")",100);
           }else{
            $('#imagen'+($i)+' :nth-child(1)').css("margin-top", "0px"); 
           n=0;
