@@ -134,6 +134,7 @@ $("#empezar").attr("id","detener");
 // FIN NUEVAS FUNCIONES ARTYOM
  // LOGICA DE TEXTO A IMAGEN
   $tradInput = $('#h-trad-text'); // Texto enviado por el usuario
+  $('#h-trad-text').html('');
    traducirSpaCol = function(){
     // validacion
     if (!$tradInput.val().length){
@@ -195,6 +196,8 @@ $("#empezar").attr("id","detener");
       
       generarSlideshow($trad);
    tradAnt = $trad + tradAnt;
+    Limpiar();
+
     });
 
   }
