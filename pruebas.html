@@ -103,6 +103,7 @@ $("#empezar").attr("id","detener");
               $textoarea.text(texto);
               traducirSpaCol();
               //MostrarDesde(1);
+              Limpiar();
             }
             var Limpiar = function() {
               
@@ -197,7 +198,7 @@ $("#empezar").attr("id","detener");
 
     ajaxTraduccion();
     // LIMPIEZA
-    texto = '';
+    
 	$textoarea.val('');
 	$textoarea.html('');
 	$tradInput = "";
