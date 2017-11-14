@@ -32,6 +32,16 @@
 <center>
           <div class="ws-wrapper">
     <ul id="ws-translator">
+    	 <div class="switch">
+			  	
+			    <label>
+			    	<p> Deletrear las palabras que no encuentre. </p>
+			      Off
+			      <input id="deletreo" type="checkbox" checked="true">
+			      <span class="lever"></span>
+			      On
+			    </label>
+			  </div>
       <li><img src="http://hetah.net/_assets/modules/traductor/img/conector_espera.jpg"/></li>
 
     </ul>
@@ -42,10 +52,12 @@
 </center>
 <br>
           <span class="card-title teal-text"><strong>En-Se&ntildeas</strong></span>
-          <a  id="empezar" class="btn-floating halfway-fab waves-effect waves-light teal darken-2"><i class="material-icons">play_arrow</i> </a>
+          <a  id="empezar" class="btn-floating halfway-fab waves-effect waves-light teal darken-2"><i class="material-icons">mic</i> </a>
            <!-- <a id="detener" class="btn-floating halfway-fab waves-effect waves-effect red"><i class="material-icons">stop</i></a> -->
+         
         </div>
         <div class="card-content teal darken-1">
+
           <p id="textotraducido" class="white-text">Este sistema de traducci&oacuten por voz fue elaborado para mejorar la comunicaci&oacuten entre las personas sin limitaciones y las personas con limitaciones auditivas, mediante Iris, la int&eacuterprete animada desarrollada por la <a class="black-text" href="http://hetah.net">Fundaci&oacuten HETAH.</a>
 
 </p>
@@ -64,6 +76,7 @@
   var n =0;
   var cantidad = 0;
   var tradAnt= "";
+  var checkb=0;
   var FrameActual = 1;
   $textoarea = $("#h-trad-text");
  $('#ws-btn-esc').bind("click", function(){
@@ -71,16 +84,17 @@
   
   }); 
  var texto = '';
+
  $('#empezar').bind("click", function(){
 
 
  $('#empezar').removeClass("teal");
 $('#empezar').addClass("red");
- $("#empezar").html("<i class='material-icons'>stop</i>"); 
+ $("#empezar").html("<i class='material-icons'>mic_off</i>"); 
 $("#empezar").attr("id","detener");  
 
 // RECONOCIMIETO DE VOZ
- 
+
 
         if (annyang) {
             // Let's define our first command. First the text we expect, and then the function it should call
@@ -133,9 +147,17 @@ $("#empezar").attr("id","detener");
   
 // FIN NUEVAS FUNCIONES ARTYOM
  // LOGICA DE TEXTO A IMAGEN
-  $tradInput = $('#h-trad-text'); // Texto enviado por el usuario
-  $('#h-trad-text').html('');
+  
+  
    traducirSpaCol = function(){
+   	
+   	 checkb=0;
+        if($("#deletreo:checkbox:checked").val()) {
+        	checkb=1;
+        }
+   	console.log("Valor del deletreo: "+$("#deletreo:checkbox:checked").val());
+   	
+	$tradInput = $('#h-trad-text'); // Texto enviado por el usuario
     // validacion
     if (!$tradInput.val().length){
       // $botonLimpiar.click();
@@ -174,6 +196,13 @@ $("#empezar").attr("id","detener");
    console.log("Esto va para la peticion: "+tradTxt);
 
     ajaxTraduccion();
+    // LIMPIEZA
+    texto = '';
+	$textoarea.val('');
+	$textoarea.html('');
+	$tradInput = "";
+
+	
    }
 
   ajaxTraduccion = function(){
@@ -182,7 +211,8 @@ $("#empezar").attr("id","detener");
      type: "POST",
       url: 'peticion.php',
      // data: 'txt='+tradTxt,
-     data: {txt : tradTxt},
+     data: {txt : tradTxt, check: checkb},
+
       dataType: "json",
      
     });
@@ -196,7 +226,7 @@ $("#empezar").attr("id","detener");
       
       generarSlideshow($trad);
    tradAnt = $trad + tradAnt;
-    Limpiar();
+    
 
     });
 
@@ -299,6 +329,8 @@ $("#empezar").attr("id","detener");
           }
          
       }
+
+    
 </script> 
 </body>
 </html>

@@ -28,6 +28,7 @@
     return $rawdata; //devolvemos el array
 }
 	$txt = $_POST['txt']; // Variable post
+	$deletreo = $_POST['check'];
 	//$txt = $_GET['txt'];
 	$myArray = [];
 	$auxArray = [];
@@ -36,7 +37,7 @@
 	foreach ($txt as &$imagen) {
 		$sql = 'SELECT * FROM imagen WHERE nombre = "'.$imagen.'" ';
 		$auxArray = getArraySQL($sql);
-		if(empty($auxArray)){
+		if(empty($auxArray) && $deletreo==1){
 			$data = file_get_contents("http://localhost/CompiladoresProject/deletreo.php?txt=".$imagen);
 			$auxArray = json_decode($data, true);
 		}			
