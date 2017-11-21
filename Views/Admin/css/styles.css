@@ -3,11 +3,10 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-#Imagen{
-	max-width: 320px;
-	max-height: 200px;
-	overflow: hidden;
-	margin-top: 0px;
+#Imagen li {
+    max-width: 320px;
+    max-height: 240px;
+    overflow: hidden;
 }
  html {
     font-family: 'Open Sans', Calibri, Trebuchet, sans-serif;

@@ -11,7 +11,9 @@
     left: auto;
     right: auto;
 }
-
+.borde {
+    border: solid 2px white;
+}
 a {
     color: #ffffff;
     text-decoration: none;

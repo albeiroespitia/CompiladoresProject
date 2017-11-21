@@ -14,8 +14,10 @@
 				$html .= '<tr>
 				            <td id="idImagenProducto">'.$row['idImagen'].' </td>
 				            <td id="descripcion">'.$row['link'].'</td>
-				            <td id="Imagen"><img src="/CompiladoresProject/Galeria/'.$row['link'].'" alt=""></td>
-				            <td><a class="editar" href="#modal2"><i class="material-icons">edit</i></a><a class="borrar"><i class="material-icons">delete</i></a></td>
+				            <td id="Imagen"><li><img src="/CompiladoresProject/Galeria/'.$row['link'].'" alt=""></li></td>
+				            <td>
+				            <a class="editar" href="#"><i class="material-icons">play_circle_filled</i></a>
+				            <a class="editar" href="#modal2"><i class="material-icons">edit</i></a><a class="borrar"><i class="material-icons">delete</i></a></td>
 				          </tr>';
 				
 				}
