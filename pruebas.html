@@ -248,6 +248,7 @@ $("#empezar").attr("id","detener");
         $("li", this).css('display', 'none');
     });*/ 
       cantidad = $trad.length + $('#ws-translator li').length;
+      var inicio = $('#ws-translator li').length;
       var sub=0;
     for (var i=$('#ws-translator li').length; i<cantidad; i++){
     $slideshow.append( "<li id='imagen"+(i+1)+"' style='display: none;'><img id='caja1'  style='margin-top: 0px;' src='Galeria/"+$trad[sub]['link']+"'/> </li>" );
@@ -255,7 +256,7 @@ $("#empezar").attr("id","detener");
    
     }
     console.log("la cantidad es:"+cantidad);
-    for (var i in $trad) {
+    for (var i=inicio; i<cantidad; i++){
       
         var indice = parseInt(i);
          // console.log("El vector es "+$trad[i]['nombre']);
