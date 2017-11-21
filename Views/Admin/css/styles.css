@@ -4,14 +4,6 @@
 	box-sizing: border-box;
 }
 
-
-.row .col.s9 {
-    width: 75%;
-    margin-left: auto;
-    left: auto;
-    right: auto;
-    padding: 10%;
-}
 #Imagen li {
     max-width: 320px;
     max-height: 240px;
