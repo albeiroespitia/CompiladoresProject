@@ -86,7 +86,7 @@
 
     <div class="col s9" style="padding: 5%; margin-top:0%; ">
       <h3>Base de datos de señas</h3>
-      <a href="../../index.html" class="cerrar-sesion">Salir</a>
+      <a href="../../pruebas.html" class="cerrar-sesion">Salir</a>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
      <table class="tablaDatos">
         <thead>
