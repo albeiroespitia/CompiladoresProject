@@ -256,11 +256,12 @@ $("#empezar").attr("id","detener");
    
     }
     console.log("la cantidad es:"+cantidad);
-    for (var i=inicio; i<cantidad; i++){
+    for (var i in $trad) {
       
         var indice = parseInt(i);
          // console.log("El vector es "+$trad[i]['nombre']);
-           $('#ws-palabras').append("<a  style='color: #b91616;' onclick='MostrarDesde("+(indice+1)+")'> "+ $trad[i]['nombre'] +" <a/>");
+           $('#ws-palabras').append("<a  style='color: #b91616;' onclick='MostrarDesde("+(inicio+1)+")'> "+ $trad[i]['nombre'] +" <a/>");
+           inicio++;
       
     }
 
