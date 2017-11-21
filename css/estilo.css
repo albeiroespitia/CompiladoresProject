@@ -3,8 +3,13 @@
     max-height: 240px;
     overflow: hidden;
 }
+nav{
+    background-color: #16A086;
+}
 
-
+.page-footer {
+    background-color: #017C81;
+}
 .row .col.m6 {
     width: 50%;
     margin-left: 25%;

@@ -25,18 +25,7 @@ $('#empezar').addClass("red");
 $("#empezar").attr("id","detener");  
 
 // RECONOCIMIETO DE VOZ
-
-
-        if (annyang) {
-            // Let's define our first command. First the text we expect, and then the function it should call
-            var ImprimirTexto = function(tag) {
-              texto = texto +" "+ tag;
-              $textoarea.text(texto);
-              traducirSpaCol();
-              //MostrarDesde(1);
-              Limpiar();
-            }
-            var Limpiar = function() {
+       var Limpiar = function(tag) {
               
               texto = '';
               $textoarea.text('');
@@ -46,10 +35,25 @@ $("#empezar").attr("id","detener");
               tradAnt= "";
               FrameActual = 1;
               
-            };
+            }
+
+    
+        if (annyang) {
+            // Let's define our first command. First the text we expect, and then the function it should call
+            var ImprimirTexto = function(tag) {
+
+              texto = texto +" "+ tag;
+              $textoarea.text(texto);
+              traducirSpaCol();
+              //MostrarDesde(1);
+              Limpiar();
+            }
+           
             var commands = {
-                'limpiar': function () {
-                    Limpiar();
+                'limpiar':function() { 
+                  PrimeraVez = 0;
+                  $('#ws-palabras').html('');
+                  $('#ws-translator').html('<li><img src="http://hetah.net/_assets/modules/traductor/img/conector_espera.jpg"/></li>');
                 },
                 '*tag' :
                     ImprimirTexto
@@ -136,7 +140,20 @@ $("#empezar").attr("id","detener");
 */
 	
    }
-
+    numeroATexto = function( num ){
+    var n = num.toString(),
+    nL = n.length;
+    
+    if (nL===7){n = numMillonATexto(n);}         //7 1000000 millon
+    if (nL===6){n = numCentenaDeMilesATexto(n);} //6 100000  cienmil
+    if (nL===5){n = numDecenaDeMilesATexto(n);}  //5 10000   diezmil    
+    if (nL===4){n = numMilesATexto(n);}          //4 1000    millar
+    if (nL===3){n = numCentenaATexto(n);}        //3 100     centena
+    if (nL===2){n = numDecenaATexto(n);}         //2 10      decena
+    if (nL===1){n = numUnidadATexto(n);}         //1 1       unidad
+    
+    return n;
+  };
   ajaxTraduccion = function(){
     console.log("Realizando peticion");
     var request = $.ajax({
@@ -263,5 +280,186 @@ $("#empezar").attr("id","detener");
           }
          
       }
+
+
+      // Funciones para convertir numero a texto
+
+  numUnidadATexto = function( num ){// 0(1)
+    var n = num;
+    switch (n){
+      case '0':n = 'cero';break;
+      case '1':n = 'uno';break;
+      case '2':n = 'dos';break;
+      case '3':n = 'tres';break;
+      case '4':n = 'cuatro';break;
+      case '5':n = 'cinco';break;
+      case '6':n = 'seis';break;
+      case '7':n = 'siete';break;
+      case '8':n = 'ocho';break;
+      case '9':n = 'nueve';break;
+    }
+    return n;
+  },
+  
+  numDecenaATexto = function( num ){// 00(2)
+    var n = num;
+    
+    if (parseInt(n)<20){// 00-19
+      if (parseInt(n)<10){// 00-09
+        return numUnidadATexto(n[1]);
+      }else{
+        switch (n){// 10-19
+          case '10':n = 'diez';break;
+          case '11':n = 'once';break;
+          case '12':n = 'doce';break;
+          case '13':n = 'trece';break;
+          case '14':n = 'catorce';break;
+          case '15':n = 'quince';break;
+          case '16':n = 'dieciseis';break;
+          case '17':n = 'diecisiete';break;
+          case '18':n = 'dieciocho';break;
+          case '19':n = 'diecinueve';break;
+          case '19':n = 'diecinueve';break;
+        }
+      }
+    }else{// 20-99
+      var nT;
+      switch (n[0]){// 20,30...90
+        case '2':nT = 'veinte';break;
+        case '3':nT = 'treinta';break;
+        case '4':nT = 'cuarenta';break;
+        case '5':nT = 'cincuenta';break;
+        case '6':nT = 'sesenta';break;
+        case '7':nT = 'setenta';break;
+        case '8':nT = 'ochenta';break;
+        case '9':nT = 'noventa';break;
+      }
+      if (parseInt(n[1])===0){// 20,30...90 exacto
+        return nT;
+      }else{// 21-99
+        return nT + '|' + numUnidadATexto(n[1]);        
+      }      
+    }
+    return n;
+  },
+  
+  numCentenaATexto = function( num ){// 000(3)
+    var n = num;
+    
+    if (parseInt(n[0])===0){// 000-099
+      return numDecenaATexto(n.substr(1,2));
+    }else{
+      var nT;  
+      switch (n[0]){// 100,200...900
+        case '1':nT = 'cien';break;// este es UN SOLO signo el de cien                
+        case '2':nT = 'doscientos';break;
+        case '3':nT = 'trecientos';break;
+        case '4':nT = 'cuatrocientos';break;
+        case '5':nT = 'quinientos';break;
+        case '6':nT = 'seiscientos';break;
+        case '7':nT = 'setecientos';break;
+        case '8':nT = 'ochocientos';break;
+        case '9':nT = 'novecientos';break;
+      }
+    }
+    
+    if (parseInt(n[1])===0 && parseInt(n[2])===0){// 100,200...900 exacto
+      return nT;
+    }else{// 101-999
+      if (parseInt(n[0])===1){
+        return nT + 'to|' + numDecenaATexto(n.substr(1,2));
+      }else{
+        return nT + '|' + numDecenaATexto(n.substr(1,2));
+      }
+    }
+  },
+  
+  numMilesATexto= function( num ){// 0000(4)
+    var n = num;
+    
+    if (parseInt(n[1])===0 && parseInt(n[2])===0 && parseInt(n[3])===0){// x000
+      if (parseInt(n[0])===1){// 1000 exacto
+        return 'mil';
+      }
+      if (parseInt(n[0])===2){// 2000 exacto
+        return 'dos mil';
+      }
+      if (parseInt(n[0])===3){// 3000 exacto
+        return 'tres mil';
+      }
+      if (parseInt(n[0])===4){// 4000 exacto
+        return 'cuatro mil';
+      }
+      if (parseInt(n[0])===5){// 5000 exacto
+        return 'cinco mil';
+      }
+      return numUnidadATexto(n[0]) + '|' + 'miles';// 6000,7000,8000,9000 exacto
+    }else{// 1001-9999
+      var nT;
+      if (parseInt(n[0])===1){// 0001-1999
+        nT = 'mil';
+      }else{
+        if (parseInt(n[0])>1 && parseInt(n[0])<6){
+          nT = numUnidadATexto(n[0]) + ' mil';//2000-5999
+        }else{
+          nT = numUnidadATexto(n[0]) + '|' + 'miles';//6000-9999
+        }
+      }
+      nT += '|' + numCentenaATexto(n.substr(1,3))//1001-9999
+      
+      return nT;
+    }
+  },
+  
+  numDecenaDeMilesATexto = function( num ){// 00000(5)
+    var n = num,
+    nT = numDecenaATexto(n.substr(0,2)) + '|miles';
+    
+    if (parseInt(n[2])===0 && parseInt(n[3])===0 && parseInt(n[4])===0){// xx000 exacto
+      return nT;
+    }
+    return nT += '|' + numCentenaATexto(n.substr(2,5));    
+  },
+  
+  numCentenaDeMilesATexto = function( num ){// 000000(6)
+    var n = num,
+    nT='';
+    
+    if (!(parseInt(n[0])===0 && parseInt(n[1])===0 && parseInt(n[2])===0)){
+      nT = numCentenaATexto(n.substr(0,3));
+      if (parseInt(n[0])===0 && parseInt(n[1])===0 && parseInt(n[2])===1){
+        nT = nT.substr(0,(nT.length-1));
+      }
+      nT += '|mil';
+    }
+    
+    if (parseInt(n[3])===0 && parseInt(n[4])===0 && parseInt(n[5])===0){// xxx000 exacto
+      return nT;
+    }
+    
+    return nT += '|' + numCentenaATexto(n.substr(3,6));
+  },
+  
+  numMillonATexto= function( num ){// 0000000(7)
+    var n = num;
+    nT = numUnidadATexto(n[0]);
+    
+    if (parseInt(n[0])===1){
+      nT = nT.substr(0, 2) + '|millon';
+    }else{
+      nT += '|millones';
+    }
+    
+    if(parseInt(n[1])===0 && parseInt(n[2])===0 && parseInt(n[3])===0 &&
+        parseInt(n[4])===0 && parseInt(n[5])===0 && parseInt(n[6])===0){// x000000 exacto
+      return nT;
+    }
+    
+    if (!(parseInt(n[1])===0 && parseInt(n[2])===0 && parseInt(n[3])===0)){
+      nT += '|';
+    }
+    nT += numCentenaDeMilesATexto(n.substr(1, 6));
+    return nT;
+  };  
 
     
