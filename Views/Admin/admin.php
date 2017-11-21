@@ -84,7 +84,7 @@
     </ul>
     </div>
 
-    <div class="col s9" style="padding: 10%">
+    <div class="col s9" style="padding: 10%; margin-top:-10%; ">
       <h3>Base de datos de señas</h3>
       <a href="../../index.html" class="cerrar-sesion">Salir</a>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
