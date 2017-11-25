@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+	<title>Probar tildes</title>
+</head>
+<body>
+	<script language="JavaScript" type="text/javascript">
+
+String.prototype.replaceLatinChar = function(){
+ return output = this.replace(/á|é|í|ó|ú|ñ|ä|ë|ï|ö|ü/ig,function (str,offset,s) {
+        var str =str=="á"?"a":str=="é"?"e":str=="í"?"i":str=="ó"?"o":str=="ú"?"u":str=="ñ"?"n":str;
+		   str =str=="Á"?"A":str=="É"?"E":str=="Í"?"I":str=="Ó"?"O":str=="Ú"?"U":str=="Ñ"?"N":str;
+		   str =str=="Á"?"A":str=="É"?"E":str=="Í"?"I":str=="Ó"?"O":str=="Ú"?"U":str=="Ñ"?"N":str;
+		   str =str=="ä"?"a":str=="ë"?"e":str=="ï"?"i":str=="ö"?"o":str=="ü"?"u":str;
+		   str =str=="Ä"?"A":str=="Ë"?"E":str=="Ï"?"I":str=="Ö"?"O":str=="Ü"?"U":str;
+        return (str);
+        })
+	
+}
+
+
+var str = "Hola soy pingüino viendo televisión.\n" +
+				"á|é|í|ó|ú|ñ|ä|ë|ï|ö|ü|"+
+				"Á|É|Í|Ó|Ú|Ñ|Ä|Ë|Ï|Ö|Ü ";
+
+document.write(str + "<br>");
+document.write(str.replaceLatinChar());
+
+//-->
+</script>
+
+</body>
+</html>

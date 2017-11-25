@@ -1,6 +1,16 @@
 
-
-   
+  String.prototype.replaceLatinChar = function(){
+ return output = this.replace(/á|é|í|ó|ú|ñ|ä|ë|ï|ö|ü/ig,function (str,offset,s) {
+        var str =str=="á"?"a":str=="é"?"e":str=="í"?"i":str=="ó"?"o":str=="ú"?"u":str=="ñ"?"n":str;
+       str =str=="Á"?"A":str=="É"?"E":str=="Í"?"I":str=="Ó"?"O":str=="Ú"?"U":str=="Ñ"?"N":str;
+       str =str=="Á"?"A":str=="É"?"E":str=="Í"?"I":str=="Ó"?"O":str=="Ú"?"U":str=="Ñ"?"N":str;
+       str =str=="ä"?"a":str=="ë"?"e":str=="ï"?"i":str=="ö"?"o":str=="ü"?"u":str;
+       str =str=="Ä"?"A":str=="Ë"?"E":str=="Ï"?"I":str=="Ö"?"O":str=="Ü"?"U":str;
+        return (str);
+        })
+  
+}
+  // logica   
    var PrimeraVez = 0;
    var desde=0;
   var veces = 0;         
@@ -51,6 +61,8 @@ $("#empezar").attr("id","detener");
            
             var commands = {
                 'limpiar':function() { 
+                  desde=0;
+                  imagenprincipal=0;
                   PrimeraVez = 0;
                   $('#ws-palabras').html('');
                   $('#ws-translator').html('<li><img src="http://hetah.net/_assets/modules/traductor/img/conector_espera.jpg"/></li>');
@@ -105,12 +117,15 @@ $("#empezar").attr("id","detener");
     // Convierto a minisculas y elimino espacios iniciales y finales
     var tradTxtTmp = $tradInput.val().toLowerCase().replace(/^\s+|\s+$/g,'');
     // Reemplazo acentos
-      tradTxtTmp = tradTxtTmp.replace(/(Ã¡)/g,'a');
-      tradTxtTmp = tradTxtTmp.replace(/(Ã©)/g,'e');
-      tradTxtTmp = tradTxtTmp.replace(/(Ã­)/g,'i');
-      tradTxtTmp = tradTxtTmp.replace(/(Ã³)/g,'o');
-      tradTxtTmp = tradTxtTmp.replace(/(Ãº)/g,'u');
+    tradTxtTmp = tradTxtTmp.replaceLatinChar();
+      tradTxtTmp = tradTxtTmp.replace(/(á)/g,'a');
+      tradTxtTmp = tradTxtTmp.replace(/(é)/g,'e');
+      tradTxtTmp = tradTxtTmp.replace(/(í)/g,'i');
+      tradTxtTmp = tradTxtTmp.replace(/(ó)/g,'o');
+      tradTxtTmp = tradTxtTmp.replace(/(ñ)/g,'n');
+      tradTxtTmp = tradTxtTmp.replace(/(ú)/g,'u');
       tradTxtTmp = tradTxtTmp.split(/\s+/);
+      
   // 2. Elimino palabras no utilizadas en lengua de signos    
     var tradTxtTmpL = tradTxtTmp.length,
      tradTxtTmp2 = [];
@@ -461,5 +476,7 @@ $("#empezar").attr("id","detener");
     nT += numCentenaDeMilesATexto(n.substr(1, 6));
     return nT;
   };  
+
+
 
     
