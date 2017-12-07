@@ -24,3 +24,6 @@ a {
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
 }
+.pagination li.active {
+    background-color: #16a085;
+}

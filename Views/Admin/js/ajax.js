@@ -1,7 +1,17 @@
-function reload(){
+function reload(letra, desde){
+
+	//Cambiar active ul de letras
+	$('.pagination li.active').removeClass("active");
+	$("#"+letra).addClass("active");
+
+	//Cambiar active ul de indices
+	$('li.active2').removeClass("active2");
+	var indice = (parseInt(desde)/15)+1;
+	$("#"+indice).addClass("active2");
+
 	$.ajax({
 		url: '/CompiladoresProject/Controller/ControllerImagen.php',
-		data : {tipo : 'listar'},
+		data : {tipo : 'listar', letraI: letra, indice: desde },
 		type : 'POST',
 		success: function(res){
 			$('.cuerpoTabla').html(res);
@@ -10,8 +20,14 @@ function reload(){
 }
 
 $.holdReady(true);
-reload();
+reload('a',0);
 $.holdReady(false);
+
+function subindice(desde){
+	reload($('.pagination li.active a').text().toLowerCase(),desde);
+	//console.log($('.pagination li.active a').text().toLowerCase());
+}
+
 
 $(document).ready(function() {
 	

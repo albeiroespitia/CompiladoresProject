@@ -203,6 +203,7 @@ $("#empezar").attr("id","detener");
     $slideshow = $('#ws-translator');
     if(imagenprincipal==0){
       $slideshow.html('');
+      $('#ws-palabras').html('');
       imagenprincipal=1;
     }
     
@@ -222,7 +223,7 @@ $("#empezar").attr("id","detener");
       
         var indice = parseInt(i);
          // console.log("El vector es "+$trad[i]['nombre']);
-           $('#ws-palabras').append("<a  style='color: #b91616;' onclick='MostrarDesde("+(inicio+1)+")'> "+ $trad[i]['nombre'] +" <a/>");
+           $('#ws-palabras').append("<a  onclick='MostrarDesde("+(inicio+1)+")'> "+ $trad[i]['nombre'] +" <a/>");
            inicio++;
       
     }

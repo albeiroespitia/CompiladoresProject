@@ -41,38 +41,63 @@
     <div style="margin-left:25%;" class="col s12 m6">
       <div class="card borde">
         <div class="card-image">
-<center>
+        <center>
           <div class="ws-wrapper">
-            <div class="switch">
-          
-          <label>
-            <p> Deletrear las palabras que no encuentre. </p>
-            Off
-            <input id="deletreo" type="checkbox" checked="true">
-            <span class="lever"></span>
-            On
-          </label>
-        </div>
+            
     <ul id="ws-translator">
        
       <li><img src="http://hetah.net/_assets/modules/traductor/img/conector_espera.jpg"/></li>
 
     </ul>
-    <div id="ws-palabras"></div>
+    
   </div>
   <a style="background: #ffffff;" onclick='MostrarDesde(1)' class="btn-floating  waves-effect waves-light teal darken-2"><i class="material-icons">replay</i> </a>
   
 </center>
 <br>
           <span class="card-title teal-text"><strong>En-Se&ntildeas</strong></span>
-          <a  id="empezar" class="btn-floating halfway-fab waves-effect waves-light teal darken-2 pulse"><i class="material-icons">mic</i> </a>
-           <!-- <a id="detener" class="btn-floating halfway-fab waves-effect waves-effect red"><i class="material-icons">stop</i></a> -->
-         
+       <a  id="empezar" class="btn-floating halfway-fab waves-effect waves-light teal darken-2 pulse"><i class="material-icons">mic</i> </a> 
+      
         </div>
-        <div class="card-content teal darken-1">
 
-          <p id="textotraducido" class="white-text">Activa el microfono y empieza hablar</p>
+
+
+        
+
+        <!-- Ajustes -->
+        <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a class="active" href="#test4"><b>Inicio</b></a></li>
+        <li class="tab"><a href="#test5"><b>Traducido</b></a></li>
+        <li class="tab"><a href="#test6"><b>Ajustes</b></a></li>
+        <div class="indicator  teal darken-4" style="z-index:1"></div>
+      </ul>
+
+    </div>
+    <div class="card-content teal ">
+      <div id="test4" class="white-text">
+          <p >Activa el microfono y empieza hablar</p>
+      </div>
+      <div id="test5" class="white-text">
+        <div id="ws-palabras">Aun no se ha traducido ninguna frase.</div>
+      </div>
+      <div id="test6" >
+        <div class="switch">
+          <center>
+            <label>
+              <p class="white-text"> Deletrear las palabras que no encuentre. </p>
+              <a class="white-text"><b>Off</b></a>
+              <input id="deletreo" type="checkbox" checked="true">
+              <span class="lever"></span>
+              <a class="white-text"><b>On</b></a>
+            </label>
+        </center>
         </div>
+      </div>
+    </div>
+         
+      
+        <!-- Fin Ajustes -->
       </div>
     </div>
   </div>

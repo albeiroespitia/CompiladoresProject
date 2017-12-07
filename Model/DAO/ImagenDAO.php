@@ -10,8 +10,9 @@
 
 
 
-		public function listarImagenes(){
-			$sql = "SELECT * from imagen";
+		public function listarImagenes($letra, $indice){
+			$sql = "SELECT * FROM imagen WHERE nombre REGEXP '^".$letra."' LIMIT 15 OFFSET ".$indice."";
+			//$sql = "SELECT * from imagen";
 			$consulta = $this->db->prepare($sql);
 			$resultado = $consulta->execute();
 			$imagenes = $consulta->fetchall(PDO::FETCH_ASSOC);

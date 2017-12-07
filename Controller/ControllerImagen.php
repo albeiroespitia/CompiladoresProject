@@ -6,14 +6,14 @@
 
 		if($_POST['tipo'] == 'listar'){
 			$imagenDAO = new ImagenDAO();
-			$array_imagenes = $imagenDAO->listarImagenes();
+			$array_imagenes = $imagenDAO->listarImagenes($_POST['letraI'],$_POST['indice']);
 			$html = " ";
 			if($array_imagenes != 0){
 
 				foreach ($array_imagenes as $row) {
 				$html .= '<tr>
 				            <td id="idImagenProducto">'.$row['idImagen'].' </td>
-				            <td id="descripcion">'.$row['link'].'</td>
+				            <td id="descripcion">'.$row['nombre'].'</td>
 				            <td id="Imagen"><li><img src="/CompiladoresProject/Galeria/'.$row['link'].'" alt=""></li></td>
 				            <td>
 				            <a class="editar" href="#"><i class="material-icons">play_circle_filled</i></a>
