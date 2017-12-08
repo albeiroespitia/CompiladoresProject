@@ -4,10 +4,7 @@ function reload(letra, desde){
 	$('.pagination li.active').removeClass("active");
 	$("#"+letra).addClass("active");
 
-	//Cambiar active ul de indices
-	$('li.active2').removeClass("active2");
-	var indice = (parseInt(desde)/15)+1;
-	$("#"+indice).addClass("active2");
+
 
 	$.ajax({
 		url: '/CompiladoresProject/Controller/ControllerImagen.php',
@@ -15,8 +12,15 @@ function reload(letra, desde){
 		type : 'POST',
 		success: function(res){
 			$('.cuerpoTabla').html(res);
+			//Cambiar active ul de indices
+			
+			$('#ul-indices li.active2').removeClass("active2");
+			var indice = (parseInt(desde)/15)+1;
+			$("#"+indice).addClass("active2");
 		}
 	})
+
+	
 }
 
 $.holdReady(true);

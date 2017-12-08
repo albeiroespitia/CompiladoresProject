@@ -103,7 +103,7 @@
       <a href="../../index.html" class="cerrar-sesion">Salir</a>
      <a class="waves-effect waves-light btn agregarButton" href="#modal1">Agregar</a>
       <ul id='ul-letras' style="width: 102%;" class="col s12 pagination">
-  	    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+  	    <li class="disabled"><a ><i class="material-icons">chevron_left</i></a></li>
   	    <li id="a" class="active"><a onclick="reload('a',0)">A</a></li>
   	    <li id="b" class="waves-effect"><a onclick="reload('b',0)">B</a></li>
   	    <li id="c" class="waves-effect"><a onclick="reload('c',0)">C</a></li>
@@ -130,12 +130,16 @@
   	    <li id="y" class="waves-effect"><a  onclick="reload('y',0)">Y</a></li>
   	    <li id="z" class="waves-effect"><a  onclick="reload('z',0)">Z</a></li>
 
-  	    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  	    <li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>
 	  </ul>
     <br>
     <div class="col s13"></div>
-    <center>
-       <ul class="pagination col s12">
+    
+     <table class="tablaDatos">
+        <thead>
+          <!--
+          <center>
+       <ul id="ul-indices" class="pagination col s12">
           <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
           <li id="1" class="active2"><a onclick="subindice(0)"href="#!">1</a></li>
           <li id="2" class="waves-effect"><a onclick="subindice(15)">2</a></li>
@@ -145,13 +149,13 @@
           <li class="waves-effect"><a"><i class="material-icons">chevron_right</i></a></li>
         </ul>
       </center>
-     <table class="tablaDatos">
-        <thead>
+    -->
           <tr>
 
               <th>ID</th>
               <th>Nombre</th>
               <th>Imagen</th>
+              <th>Opciones</th>
 
           </tr>
 
