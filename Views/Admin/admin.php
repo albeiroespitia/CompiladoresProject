@@ -91,7 +91,7 @@
 
   <div class="col s3">
 	<ul id="slide-out" class="side-nav fixed">
-	  <li class="titulo">Administracion</li>
+	 <center> <li class="titulo">Administracion </li> </center>
       <li class="selected"><a>Señas</a></li>
       <li><a href="preparar.php">Preparar clase</a></li>
      

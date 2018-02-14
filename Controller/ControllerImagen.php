@@ -18,9 +18,9 @@
        							<ul id="ul-indices" class="pagination col s12">
           							<li class="disabled"><a ><i class="material-icons">chevron_left</i></a></li>';
 				// para el primero este active
-          		$html .= ' <li id="1" class="active2"><a onclick="subindice(0)" >1</a></li>';
+          		$html .= ' <li id="1" class="active2"><a href="#" onclick="subindice(0)" >1</a></li>';
 				for ($i=1; $i < $seccion; $i++) { 
-					$html .= '<li id="'.($i+1).'"><a onclick="subindice('.($i*15).')" >'.($i+1).'</a></li>';
+					$html .= '<li id="'.($i+1).'"><a href="#" onclick="subindice('.($i*15).')" >'.($i+1).'</a></li>';
 					
 				}
 				$html .= '<li class="waves-effect"><a"><i class="material-icons">chevron_right</i></a></li>

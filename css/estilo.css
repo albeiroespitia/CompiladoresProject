@@ -27,3 +27,14 @@ a {
 .pagination li.active {
     background-color: #16a085;
 }
+ .toast{
+      background-color: #27ae60;
+    }
+    .tabs .tab a.active {
+      
+      color: #27ae60;
+    }
+    .tabs .tab a {
+      
+      color: #2ecc71;
+    }

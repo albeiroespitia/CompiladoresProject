@@ -13,13 +13,9 @@
   <link rel="stylesheet" href="css/estilo.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-      
-  
-
-
 </head>
 <body style="background-color: #262626;">
-
+<div class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">  <i class="material-icons">hearing</i>En-Se&ntilde;as | Traduce tu voz a lenguaje se&ntilde;as</a>
@@ -30,6 +26,7 @@
       </ul>
     </div>
   </nav>
+</div>
 
     <textarea id="h-trad-text" placeholder="Ingrese su frase a traducir" maxlength="140" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all" style="height: 52px; width: 90%; display:none;"></textarea>
 
@@ -74,9 +71,9 @@
       </ul>
 
     </div>
-    <div class="card-content teal ">
+    <div class="card-content teal col s12 ">
       <div id="test4" class="white-text">
-          <p >Activa el microfono y empieza hablar</p>
+          <p >Presiona el icono del microfono y empieza hablar</p>
       </div>
       <div id="test5" class="white-text">
         <div id="ws-palabras">Aun no se ha traducido ninguna frase.</div>
@@ -85,11 +82,22 @@
         <div class="switch">
           <center>
             <label>
-              <p class="white-text"> Deletrear las palabras que no encuentre. </p>
-              <a class="white-text"><b>Off</b></a>
-              <input id="deletreo" type="checkbox" checked="true">
-              <span class="lever"></span>
-              <a class="white-text"><b>On</b></a>
+              <div class="col s6">
+                <p class="white-text"> Deletrear las palabras que no encuentre. </p>
+                <a class="white-text"><b>Off</b></a>
+                <input id="deletreo" type="checkbox" checked="true">
+                <span class="lever"></span>
+                <a class="white-text"><b>On</b></a>
+              </div>
+            </label>
+            <label>
+             <div class="col s6">
+                <p class="white-text"> Mostrar dialogo de palabras traducidas </p>
+                <a class="white-text"><b>Off</b></a>
+                <input id="msjdialogo" type="checkbox" checked="true">
+                <span class="lever"></span>
+                <a class="white-text"><b>On</b></a>
+            </div>
             </label>
         </center>
         </div>

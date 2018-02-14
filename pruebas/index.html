@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Hola mundo - SpeechKITT</title>
+</head>
+<body>
+<script  src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
+<script  src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/1.0.0/speechkitt.min.js"></script>
+
+
+<script>
+if (annyang) {
+  annyang.setLanguage('es-CO');
+  annyang.debug();
+  // Add our commands to annyang
+  annyang.addCommands({
+    'hola': function() { alert('Hello world!'); }
+  });
+
+// Agrega nuestros comandos a annyang annyang . addCommands ({ ' hello ' : function () { alert ( ' ¡Hola mundo! ' );}   });  
+  
+     
+  // Dile a KITT que use annyang 
+SpeechKITT . annyang ();  
+
+  // Define una hoja de estilo para que KITT use 
+SpeechKITT . setStylesheet ( ' //cdnjs.cloudflare.com/ajax/libs/SpeechKITT/1.0.0/themes/flat.css ' );  
+
+  // Renderiza la interfaz de KITT 
+SpeechKITT . vroom (); }  
+
+</script>
+</body>
+</html>
+
