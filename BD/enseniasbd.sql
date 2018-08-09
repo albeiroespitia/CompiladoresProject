@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2018 a las 21:31:55
+-- Tiempo de generación: 21-02-2018 a las 03:42:27
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.1.12
 
@@ -92,7 +92,6 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (123, 'adjuntar', 'adjuntar.jpg'),
 (124, 'admirar', 'admirar.jpg'),
 (125, 'admitir', 'admitir.jpg'),
-(126, 'admitir', 'admitir.jpg'),
 (127, 'adobar', 'adobar.jpg'),
 (128, 'adopcion', 'adopcion.jpg'),
 (129, 'adoptar', 'adoptar.jpg'),
@@ -125,7 +124,6 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (156, 'ajustar', 'ajustar.jpg'),
 (157, 'ala', 'ala.jpg'),
 (158, 'alabanza', 'alabanza.jpg'),
-(159, 'alabanza', 'alabanza.jpg'),
 (160, 'alba', 'alba.jpg'),
 (161, 'albania', 'albania.jpg'),
 (162, 'alcala', 'alcala.jpg'),
@@ -293,7 +291,7 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (324, 'babosa', 'babosa.jpg'),
 (325, 'bafle', 'bafle.jpg'),
 (326, 'bailar', 'bailar.jpg'),
-(327, 'bailar', 'bailarina.jpg'),
+(327, 'bailarina', 'bailarina.jpg'),
 (328, 'bajar', 'bajar.jpg'),
 (329, 'bajo', 'bajo.jpg'),
 (330, 'balanceo', 'balanceo.jpg'),
@@ -442,7 +440,6 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (473, 'discipulo', 'dicipulo.jpg'),
 (474, 'dictado', 'dictado.jpg'),
 (475, 'didactico', 'didactico.jpg'),
-(476, 'didactico', 'didactico.jpg'),
 (477, 'diez', 'diez.jpg'),
 (478, 'diferente', 'diferente.jpg'),
 (479, 'dificil', 'dificil.jpg'),
@@ -518,7 +515,6 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (549, 'caneca', 'caneca.jpg'),
 (550, 'cangrejo', 'cangrejo.jpg'),
 (551, 'canguro', 'canguro.jpg'),
-(552, 'canguro', 'canguro.jpg'),
 (553, 'canoso', 'canoso.jpg'),
 (554, 'cansado', 'cansado.jpg'),
 (555, 'cantar', 'cantar.jpg'),
@@ -569,7 +565,7 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (600, 'cientifico', 'cientifico.jpg'),
 (601, 'ciento', 'ciento.jpg'),
 (602, 'cinco', 'cinco.jpg'),
-(603, 'cine', 'cincuenta.jpg'),
+(603, 'cincuenta', 'cincuenta.jpg'),
 (604, 'circuito', 'circuito.jpg'),
 (605, 'cine', 'cine.jpg'),
 (606, 'circulatorio', 'circulatorio.jpg'),
@@ -1166,9 +1162,7 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1198, 'mono', 'mono.jpg'),
 (1199, 'mora', 'mora.jpg'),
 (1200, 'moral', 'moral.jpg'),
-(1201, 'moral', 'moral.jpg'),
 (1202, 'morder', 'morder.jpg'),
-(1203, 'morder', 'morder.jpg'),
 (1204, 'moreno', 'moreno.jpg'),
 (1205, 'morir', 'morir.jpg'),
 (1206, 'mostrar', 'mostrar.jpg'),
@@ -1297,7 +1291,7 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1329, 'plaquetas', 'plaquetas.jpg'),
 (1330, 'plasma', 'plasma.jpg'),
 (1331, 'plata', 'plata.jpg'),
-(1332, 'plata', 'platano.jpg'),
+(1332, 'platano', 'platano.jpg'),
 (1333, 'playa', 'playa.jpg'),
 (1334, 'plomero', 'plomero.jpg'),
 (1335, 'pluma', 'pluma.jpg'),
@@ -1349,7 +1343,6 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1381, 'puma', 'puma.jpg'),
 (1382, 'punto', 'punto.jpg'),
 (1383, 'puntual', 'puntual.jpg'),
-(1384, 'puntual', 'puntual.jpg'),
 (1385, 'pupila', 'pupila.jpg'),
 (1386, 'purificador', 'purificador.jpg'),
 (1387, 'purisima', 'purisima.jpg'),
@@ -1377,7 +1370,6 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1409, 'recordar', 'recordar.jpg'),
 (1410, 'rectangulo', 'rectangulo.jpg'),
 (1411, 'recto', 'recto.jpg'),
-(1412, 'recto', 'recto.jpg'),
 (1413, 'rector', 'rector.jpg'),
 (1414, 'redondeo', 'redondeo.jpg'),
 (1415, 'reflexion', 'reflexion.jpg'),
@@ -1404,7 +1396,6 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1436, 'republica', 'republica.jpg'),
 (1437, 'residir', 'residir.jpg'),
 (1438, 'residuo', 'residuo.jpg'),
-(1439, 'residuo', 'residuo.jpg'),
 (1440, 'resorte', 'resorte.jpg'),
 (1441, 'respetar', 'respetar.jpg'),
 (1442, 'respirar', 'respirar.jpg'),
@@ -1438,10 +1429,8 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1470, 'saber', 'saber.jpg'),
 (1471, 'sabiduria', 'sabiduria.jpg'),
 (1472, 'sabroso', 'sabroso.jpg'),
-(1473, 'sabroso', 'sabroso.jpg'),
 (1474, 'sacerdote', 'sacerdote.jpg'),
-(1475, 'sacerdote', 'saco.jpg'),
-(1476, 'saco', 'saco.jpg'),
+(1475, 'saco', 'saco.jpg'),
 (1477, 'sacramento', 'sacramento.jpg'),
 (1478, 'sacrificio', 'sacrificio.jpg'),
 (1479, 'sadismo', 'sadismo.jpg'),
@@ -1637,8 +1626,7 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1673, 'vicio', 'vicio.jpg'),
 (1674, 'vida', 'vida.jpg'),
 (1675, 'viejo', 'viejo.jpg'),
-(1676, 'vino', 'vino.jpg');
-INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
+(1676, 'vino', 'vino.jpg'),
 (1677, 'violacion', 'violacion.jpg'),
 (1678, 'virgen', 'virgen.jpg'),
 (1679, 'virus', 'virus.jpg'),
@@ -1649,7 +1637,8 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1684, 'volumen', 'volumen.jpg'),
 (1685, 'vuelan', 'vuelan.jpg'),
 (1686, 'w', 'w.jpg'),
-(1687, 'web', 'web.jpg'),
+(1687, 'web', 'web.jpg');
+INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1688, 'Whatsapp', 'whatsapp.jpg'),
 (1689, 'wifi', 'wifi.jpg'),
 (1690, 'x', 'x.jpg'),
@@ -1662,7 +1651,70 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 (1697, 'yuca', 'yuca.jpg'),
 (1698, 'z', 'z.jpg'),
 (1699, 'zanahoria', 'zanahoria.jpg'),
-(1700, 'zancudo', 'zancudo.jpg');
+(1700, 'zancudo', 'zancudo.jpg'),
+(1715, 'área lateral', 'area_lateral.jpg'),
+(1732, 'articulación biología', 'articulacion_biologia.jpg'),
+(1741, 'adjetivo calificativo', 'adjetivo_calificativo.jpg'),
+(1742, 'adjetivo superlativo', 'adjetivo_superlativo.jpg'),
+(1744, 'administración de empresas', 'administracion_de_empresas.jpg'),
+(1788, 'Agua Chica', 'agua_chica.jpg'),
+(1789, 'Agua de Dios', 'agua_de_dios.jpg'),
+(1804, 'alcanzar a alguien', 'alcanzar_a_alguien.jpg'),
+(1805, 'alcanzar algo', 'alcanzar_algo.jpg'),
+(1806, 'alcanzar el puntaje', 'alcanzar_el_puntaje.jpg'),
+(1812, 'alfabeto dactilólogico', 'alfabeto_dactilologico.jpg'),
+(1817, 'alimento espiritual', 'alimento_espiritual.jpg'),
+(1860, 'Alvarado', 'alvarado.jpg'),
+(1883, 'amplificación', 'amplificacion.jpg'),
+(1888, 'anaranjado', 'anaranjado.jpg'),
+(1889, 'anatomía', 'anatomia.jpg'),
+(1901, 'ángulo adyacente', 'angulo_adyacente.jpg'),
+(1902, 'ángulo agudo', 'angulo_agudo.jpg'),
+(1903, 'ángulo complementario', 'angulo_complementario.jpg'),
+(1904, 'ángulo consecutivo', 'angulo_consecutivo.jpg'),
+(1905, 'ángulo convexo', 'angulo_convexo.jpg'),
+(1906, 'ángulo de giro', 'angulo_de_giro.jpg'),
+(1907, 'ángulo llano', 'angulo_llano.jpg'),
+(1908, 'ángulo obtuso', 'angulo_obtuso.jpg'),
+(1909, 'ángulo recto', 'angulo_recto.jpg'),
+(1910, 'ángulos opuestos por el vértice', 'angulos_opuestos_por_el_vertice.jpg'),
+(1911, 'ángulos suplementarios', 'angulos_suplementarios.jpg'),
+(1918, 'años', 'anos.jpg'),
+(1920, 'antepenúltima silaba', 'antepenultima_silaba.jpg'),
+(1923, 'antes de', 'antes_de.jpg'),
+(1924, 'antes de ayer', 'antes_de_ayer.jpg'),
+(1932, 'aparato de Golgi', 'aparato_de_golgi.jpg'),
+(1936, 'aplaudir oyentes', 'aplaudir_oyentes.jpg'),
+(1937, 'aplaudir sordos', 'aplaudir_sordos.jpg'),
+(1958, 'articulación biológica', 'articulacion_biologica.jpg'),
+(1960, 'articulación castellano', 'articulacion_castellano.jpg'),
+(1966, 'ascención de Jesús', 'ascencion_de_jesus.jpg'),
+(1975, 'aterrar', 'aterrar.jpg'),
+(1990, 'autopista', 'autopista.jpg'),
+(1991, 'autor', 'autor.jpg'),
+(1992, 'aventura sexual', 'aventura_sexual.jpg'),
+(2001, 'azteca', 'azteca.jpg'),
+(2036, 'Abraham', 'abraham.jpg'),
+(2040, 'abrir cortina', 'abrir_cortina.jpg'),
+(2046, 'abuso sexual', 'abuso_sexual.jpg'),
+(2049, 'acción de gracias', 'accion_de_gracias.jpg'),
+(2131, 'ácido nucleico', 'acido_nucleico.jpg'),
+(2138, 'acoso sexual', 'acoso_sexual.jpg'),
+(2147, 'Adán', 'adan.jpg'),
+(2178, 'autoridad de Diós', 'autoridad_de_dios.jpg'),
+(2179, 'autorizar', 'autorizar.jpg'),
+(2180, 'autoservicio', 'autoservicio.jpg'),
+(2181, 'auxiliar', 'auxiliar.jpg'),
+(2182, 'avanzado', 'avanzado.jpg'),
+(2183, 'avanzar', 'avanzar.jpg'),
+(2184, 'aventura', 'aventura.jpg'),
+(2204, 'asquelmintos', 'asquelmintos.jpg'),
+(2207, 'asumir a Dios', 'asumir_a_dios.jpg'),
+(2209, 'asustado', 'asustado.jpg'),
+(2651, 'Agustín Codazzi', 'agustin_codazzi.jpg'),
+(2652, 'ahí está', 'ahi_esta.jpg'),
+(2657, 'al contrario', 'al_contrario.jpg'),
+(2658, 'al lado', 'al_lado.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -1672,7 +1724,8 @@ INSERT INTO `imagen` (`idImagen`, `nombre`, `link`) VALUES
 -- Indices de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  ADD PRIMARY KEY (`idImagen`);
+  ADD PRIMARY KEY (`idImagen`),
+  ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -1682,7 +1735,7 @@ ALTER TABLE `imagen`
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `idImagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1702;
+  MODIFY `idImagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2659;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
